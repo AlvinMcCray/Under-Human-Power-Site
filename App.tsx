@@ -34,7 +34,7 @@ const App: React.FC = () => {
                {/* Image Container */}
               <div className="aspect-[4/3] bg-stone-200 relative overflow-hidden grayscale-[20%] hover:grayscale-0 transition-all duration-700 shadow-sm">
                 <img 
-                  src="./darrell-kayak.jpg" 
+                  src="darrell-kayak.jpg" 
                   alt="Darrell J. Gardner in his kayak" 
                   className="object-cover w-full h-full"
                 />
@@ -53,16 +53,12 @@ const App: React.FC = () => {
 
       {/* Philosophy Section */}
       <Section>
-        <Subtext>The Core Thesis</Subtext>
-        <Heading>We have outsourced our friction.</Heading>
+        <Subtext>The Quest</Subtext>
         <Paragraph>
-          Modern life is an exercise in the removal of resistance. We scroll instead of walk. We tap instead of make. We have optimized the human element out of our own existence, trading agency for ease, and effort for speed.
+          As a registered nurse, I am reminded daily of life’s brevity.  Patients have often shared with me their regrets of dreams unrealized…that life without balance has a steep price.  This awareness became personalized when my father passed away early in his retirement. His death brought into focus my life-long dream…a single expedition that would challenge me to use all my outdoor experiences. Being in nature allows me to reach that innermost point of balance by becoming part of its rhythm. Traveling Under Human Power rejuvenates my soul and gives me a perspective like no other.
         </Paragraph>
         <Paragraph>
-          But the texture of life is found in the friction. It is found in the resistance of the material against the hand, the ache of the legs after a long ascent, and the slowness of thoughts allowed to fully form without interruption.
-        </Paragraph>
-        <Paragraph>
-          Under Human Power is not a rejection of technology, but a recalibration of our relationship to it. It is a commitment to doing things the hard way when the hard way implies a deeper engagement with the world.
+          In 2008, I will sea kayak the entire Inside Passage, 1,400 miles.  This is just one stage of the expedition where hiking, kayaking, canoeing, cross-country skiing and snowshoeing will propel me over 5,700 contiguous miles, Under Human Power, from Mexico to the Arctic Ocean. That is the Quest!
         </Paragraph>
       </Section>
 
@@ -70,28 +66,56 @@ const App: React.FC = () => {
         <span className="font-serif italic text-accent text-2xl">§</span>
       </div>
 
-      {/* Definition Section */}
+      {/* Timeline Section */}
       <Section>
-        <Subtext>Definitions</Subtext>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 mt-12">
+        <Subtext>Timeline</Subtext>
+        <div className="space-y-16 mt-12">
+          
+          {/* Stage I */}
           <div>
-            <h3 className="font-serif text-2xl mb-4 italic">Is</h3>
-            <ul className="space-y-4 font-sans font-light text-stone-800">
-              <li className="border-b border-stone-200 pb-2">Deliberate action</li>
-              <li className="border-b border-stone-200 pb-2">Physical engagement</li>
-              <li className="border-b border-stone-200 pb-2">Slow by design</li>
-              <li className="border-b border-stone-200 pb-2">Silent observation</li>
-            </ul>
+            <h3 className="font-serif text-2xl text-ink mb-2">Stage I — The Pacific Crest Trail</h3>
+            <p className="font-sans text-xs tracking-widest uppercase text-accent mb-4">CA, OR & WA • 2,650 miles • 2004 & 2005</p>
+            <p className="font-sans font-light text-stone-700 leading-relaxed max-w-prose">
+              I hiked solo the entire length of the United States from Mexico to Canada. Taking over five million steps.
+            </p>
           </div>
+
+          {/* Stage II */}
           <div>
-            <h3 className="font-serif text-2xl mb-4 italic text-stone-500">Is Not</h3>
-            <ul className="space-y-4 font-sans font-light text-stone-500">
-              <li className="border-b border-stone-100 pb-2">Productivity hacking</li>
-              <li className="border-b border-stone-100 pb-2">Digital detoxing</li>
-              <li className="border-b border-stone-100 pb-2">Performative asceticism</li>
-              <li className="border-b border-stone-100 pb-2">Nostalgia</li>
-            </ul>
+            <h3 className="font-serif text-2xl text-ink mb-2">Stage II — "The Bridge"</h3>
+            <p className="font-sans text-xs tracking-widest uppercase text-accent mb-4">WA • 250 miles • 2006</p>
+            <p className="font-sans font-light text-stone-700 leading-relaxed max-w-prose">
+              I connected the land to the sea via the Pacific Northwest Trail & the Skagit River. Hiking over the snow covered passes of the Northern Cascade Mountains, I followed the summer run off down the Skagit River by canoe into the Puget Sound.
+            </p>
           </div>
+
+          {/* Stage III */}
+          <div>
+            <h3 className="font-serif text-2xl text-ink mb-2">Stage III — The Inside Passage</h3>
+            <p className="font-sans text-xs tracking-widest uppercase text-accent mb-4">WA, BC & AK • 1,400 miles • 2008-2009</p>
+            <p className="font-sans font-light text-stone-700 leading-relaxed max-w-prose">
+              Facing one of my most serious challenges, I solo sea kayaked up the Inside Passage from Seattle, WA to Skagway, AK.
+            </p>
+          </div>
+
+          {/* Stage IV */}
+          <div>
+            <h3 className="font-serif text-2xl text-ink mb-2">Stage IV — The Yukon River</h3>
+            <p className="font-sans text-xs tracking-widest uppercase text-accent mb-4">AK, BC & YT • 900 miles • 2010</p>
+            <p className="font-sans font-light text-stone-700 leading-relaxed max-w-prose">
+              This summer I will access the interior of Alaska by hiking the Chilkoot Trail to the head waters of the Yukon River. Then I will travel by canoe as the Yukon flows NW through northern British Columbia, the Yukon Territory and back into Alaska to its most northern point at Fort Yukon, Alaska.
+            </p>
+          </div>
+
+          {/* Stage V & VI */}
+          <div>
+            <h3 className="font-serif text-2xl text-ink mb-2">Stages V & VI — The Brooks Range & Arctic Ocean</h3>
+            <p className="font-sans text-xs tracking-widest uppercase text-accent mb-4">Alaska • 500 miles • 2011</p>
+            <p className="font-sans font-light text-stone-700 leading-relaxed max-w-prose">
+              The final push! In the spring, I will snowshoe and cross country ski to the top the Brooks Range near Atigun Pass. In the summer, I will return to traverse the peaks of the Gates of the Arctic NP and connect with a tributary of the Colville River at the village of Anaktuvuk Pass. This tributary is part of the Colville River drainage and flows down the north slope of the Brooks Range to Alaska's Arctic coast. The Colville river meets the Arctic Ocean near Oliktok Point about 40 miles west of Prudhoe Bay.
+            </p>
+          </div>
+
         </div>
       </Section>
 
