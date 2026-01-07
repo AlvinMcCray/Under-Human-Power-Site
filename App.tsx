@@ -1,13 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { Section, Divider } from './components/Section';
 import { Heading, Paragraph, Subtext } from './components/Typography';
-import { ProjectItem } from './types';
-
-const projects: ProjectItem[] = [
-  { year: '2023', title: 'The Silent Walk', description: 'Crossing the highlands without recorded audio.' },
-  { year: '2022', title: 'Shelter I', description: 'A cabin built using only hand tools.' },
-  { year: '2021', title: 'Analog Correspondence', description: 'A year of letters, no digital messages.' },
-];
 
 type Page = 'home' | 'spot-locations' | 'sponsors';
 type SortOrder = 'asc' | 'desc';
@@ -27,7 +20,7 @@ interface LocationEntry {
 const TopNav: React.FC<{ navigate: (page: Page) => void }> = ({ navigate }) => (
   <nav className="absolute top-0 left-0 w-full py-12 px-6 md:px-12 flex justify-center items-center z-50">
     <div className="flex flex-wrap justify-center gap-6 md:gap-8 font-sans text-xs md:text-sm tracking-widest uppercase text-accent bg-paper/80 backdrop-blur-sm p-4 rounded-full">
-      <a href="#" className="hover:text-ink transition-colors">Contact</a>
+      <a href="mailto:UnderHumanPower@yahoo.com" className="hover:text-ink transition-colors">Contact</a>
       <button 
         onClick={() => navigate('sponsors')}
         className="hover:text-ink transition-colors uppercase tracking-widest"
@@ -550,22 +543,6 @@ const Home: React.FC<PageProps> = ({ navigate }) => {
         <p className="text-center font-sans text-xs text-accent mt-4 tracking-widest uppercase">Fig 1. The unpaved route</p>
       </div>
 
-      {/* Projects Section */}
-      <Section>
-        <Subtext>Index of Works</Subtext>
-        <div className="mt-8">
-          {projects.map((project, index) => (
-            <div key={index} className="group py-8 border-t border-stone-200 first:border-t-0 flex flex-col md:flex-row md:items-baseline md:justify-between gap-2 md:gap-8 hover:bg-stone-50 transition-colors duration-500 -mx-4 px-4">
-              <span className="font-sans text-sm text-accent font-medium">{project.year}</span>
-              <div className="flex-1">
-                <h3 className="font-serif text-xl md:text-2xl text-ink mb-1">{project.title}</h3>
-                <p className="font-sans font-light text-stone-600">{project.description}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </Section>
-
       <Divider />
 
       {/* Reflective Section */}
@@ -584,8 +561,12 @@ const Home: React.FC<PageProps> = ({ navigate }) => {
       <Section className="bg-stone-100/50 mt-12">
         <div className="md:pl-8 border-l-2 border-stone-300">
           <Subtext>About</Subtext>
-          <p className="font-serif text-xl md:text-2xl leading-relaxed text-ink mt-6">
-            Maintained by an observer. No metrics are tracked here. No cookies are set. This is a static archive of a living philosophy.
+          <p className="font-serif text-xl md:text-2xl leading-relaxed text-ink mt-6 mb-8">
+            I live in the high desert of Northern New Mexico. When I am not on my expedition, I can be found working as a registered nurse at Christus - St. Vincent Regional Medical Center in Santa Fe.
+          </p>
+          <p className="font-sans text-lg text-stone-600">
+             Please contact me by email at:<br />
+             <a href="mailto:UnderHumanPower@yahoo.com" className="text-ink underline decoration-stone-300 underline-offset-4 hover:decoration-ink transition-all">UnderHumanPower@yahoo.com</a>
           </p>
         </div>
       </Section>
@@ -594,7 +575,7 @@ const Home: React.FC<PageProps> = ({ navigate }) => {
       <footer className="py-24 px-6 md:px-12 text-center">
         <p className="font-serif italic text-lg mb-8 text-ink">Under Human Power</p>
         <div className="flex justify-center flex-wrap gap-8 font-sans text-sm tracking-widest uppercase text-accent">
-          <a href="#" className="hover:text-ink transition-colors">Contact</a>
+          <a href="mailto:UnderHumanPower@yahoo.com" className="hover:text-ink transition-colors">Contact</a>
           <button 
             onClick={() => navigate('sponsors')} 
             className="hover:text-ink transition-colors uppercase tracking-widest"
