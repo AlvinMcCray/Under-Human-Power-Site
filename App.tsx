@@ -9,7 +9,7 @@ const projects: ProjectItem[] = [
   { year: '2021', title: 'Analog Correspondence', description: 'A year of letters, no digital messages.' },
 ];
 
-type Page = 'home' | 'spot-locations';
+type Page = 'home' | 'spot-locations' | 'sponsors';
 type SortOrder = 'asc' | 'desc';
 
 interface PageProps {
@@ -23,6 +23,112 @@ interface LocationEntry {
   long: string;
   note: string;
 }
+
+const TopNav: React.FC<{ navigate: (page: Page) => void }> = ({ navigate }) => (
+  <nav className="absolute top-0 left-0 w-full py-12 px-6 md:px-12 flex justify-center items-center z-50">
+    <div className="flex flex-wrap justify-center gap-6 md:gap-8 font-sans text-xs md:text-sm tracking-widest uppercase text-accent bg-paper/80 backdrop-blur-sm p-4 rounded-full">
+      <a href="#" className="hover:text-ink transition-colors">Contact</a>
+      <button 
+        onClick={() => navigate('sponsors')}
+        className="hover:text-ink transition-colors uppercase tracking-widest"
+      >
+        Sponsors
+      </button>
+      <button 
+        onClick={() => navigate('spot-locations')} 
+        className="hover:text-ink transition-colors uppercase tracking-widest"
+      >
+        Spot Locations
+      </button>
+      <span className="cursor-default text-stone-300 hidden md:inline">|</span>
+      <span className="cursor-default hidden md:inline">MMXXIV</span>
+    </div>
+  </nav>
+);
+
+const Sponsors: React.FC<PageProps> = ({ navigate }) => {
+  return (
+    <div className="animate-in fade-in duration-700">
+      <section className="pt-24 pb-12 px-6 md:px-12">
+        <div className="max-w-7xl mx-auto border-b border-stone-200 pb-8 mb-12 flex justify-between items-baseline">
+          <h1 className="font-serif text-4xl md:text-5xl text-ink">Sponsors</h1>
+          <button 
+            onClick={() => navigate('home')}
+            className="font-sans text-xs tracking-[0.2em] uppercase text-accent hover:text-ink transition-colors"
+          >
+            Close
+          </button>
+        </div>
+
+        <div className="max-w-3xl mx-auto">
+           <div className="mb-16">
+             <p className="font-serif text-xl italic text-stone-600 leading-relaxed">
+               Grateful acknowledgment of the organizations and individuals supporting the journey.
+             </p>
+           </div>
+
+           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24">
+             {/* Main Sponsors List */}
+             <div>
+               <Subtext className="mb-8 border-b border-stone-100 pb-2">Expedition Support</Subtext>
+               <ul className="space-y-8">
+                 <li>
+                   <h3 className="font-serif text-xl text-ink">The Kayak Academy</h3>
+                 </li>
+                 <li>
+                   <h3 className="font-serif text-xl text-ink">Beale Paddles</h3>
+                 </li>
+                 <li>
+                   <h3 className="font-serif text-xl text-ink">Rimini Web Design</h3>
+                   <span className="font-sans text-xs text-stone-500 uppercase tracking-wider mt-1 block">Rimini Corporation</span>
+                 </li>
+                 <li>
+                   <h3 className="font-serif text-xl text-ink">Spot</h3>
+                   <span className="font-sans text-xs text-stone-500 uppercase tracking-wider mt-1 block">Live to Tell About It</span>
+                 </li>
+                 <li>
+                   <h3 className="font-serif text-xl text-ink">Sea Kayak Shop</h3>
+                 </li>
+                 <li>
+                   <h3 className="font-serif text-xl text-ink">Anacortes Kayak Tours</h3>
+                 </li>
+                 <li>
+                   <h3 className="font-serif text-xl text-ink">Odyssey Kayaking</h3>
+                   <span className="font-sans text-xs text-stone-500 uppercase tracking-wider mt-1 block">Port Hardy, BC</span>
+                 </li>
+               </ul>
+             </div>
+
+             {/* Endorsements */}
+             <div>
+               <Subtext className="mb-8 border-b border-stone-100 pb-2">Darrell Endorses</Subtext>
+               <div className="space-y-8">
+                 <div>
+                   <h3 className="font-serif text-xl text-ink mb-3">Cascade Designs</h3>
+                   <ul className="font-sans font-light text-stone-600 space-y-1">
+                     <li>Thermarest</li>
+                     <li>Platypus</li>
+                     <li>MSR</li>
+                     <li>Seal Line</li>
+                   </ul>
+                 </div>
+               </div>
+             </div>
+           </div>
+        </div>
+      </section>
+
+      <footer className="py-24 px-6 md:px-12 text-center border-t border-stone-100">
+        <button 
+          onClick={() => navigate('home')} 
+          className="font-serif italic text-lg text-ink hover:text-stone-500 transition-colors"
+        >
+          Return to Index
+        </button>
+      </footer>
+    </div>
+  );
+};
 
 const SpotLocations: React.FC<PageProps> = ({ navigate }) => {
   const [sortOrder, setSortOrder] = useState<SortOrder>('desc');
@@ -322,7 +428,9 @@ const SpotLocations: React.FC<PageProps> = ({ navigate }) => {
 
 const Home: React.FC<PageProps> = ({ navigate }) => {
   return (
-    <div className="animate-in fade-in duration-700">
+    <div className="animate-in fade-in duration-700 relative">
+      <TopNav navigate={navigate} />
+      
       {/* Hero Section */}
       <section className="min-h-[90vh] flex flex-col justify-center px-6 md:px-12 pt-24 pb-12">
         <div className="max-w-7xl mx-auto w-full">
@@ -487,7 +595,12 @@ const Home: React.FC<PageProps> = ({ navigate }) => {
         <p className="font-serif italic text-lg mb-8 text-ink">Under Human Power</p>
         <div className="flex justify-center flex-wrap gap-8 font-sans text-sm tracking-widest uppercase text-accent">
           <a href="#" className="hover:text-ink transition-colors">Contact</a>
-          <a href="#" className="hover:text-ink transition-colors">Journal</a>
+          <button 
+            onClick={() => navigate('sponsors')} 
+            className="hover:text-ink transition-colors uppercase tracking-widest"
+          >
+            Sponsors
+          </button>
           <button 
             onClick={() => navigate('spot-locations')} 
             className="hover:text-ink transition-colors uppercase tracking-widest"
@@ -513,8 +626,10 @@ const App: React.FC = () => {
     <div className="min-h-screen bg-paper selection:bg-stone-200">
       {page === 'home' ? (
         <Home navigate={setPage} />
-      ) : (
+      ) : page === 'spot-locations' ? (
         <SpotLocations navigate={setPage} />
+      ) : (
+        <Sponsors navigate={setPage} />
       )}
     </div>
   );
