@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sponsors | Under Human Power</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">UNDER HUMAN POWER</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="sponsors.html" class="active">Sponsors</a></li>
+                <li><a href="journey.html">Journey</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Expedition Sponsors</h1>
+        </div>
+    </section>
+
+    <section class="sponsors-content">
+        <div class="container">
+            <div class="sponsors-intro">
+                <p>The "Under Human Power" expedition was made possible through the generous support of these partners who believed in the journey and the power of human determination.</p>
+            </div>
+
+            <div class="sponsors-list">
+                <div class="sponsor-tier">
+                    <h2 class="tier-title">Title Sponsors</h2>
+                    <div class="sponsor-items">
+                        <div class="sponsor-card">
+                            <h3>Sponsor Name</h3>
+                            <p>Provided essential gear and equipment for the hiking portions of the expedition.</p>
+                        </div>
+                        <div class="sponsor-card">
+                            <h3>Sponsor Name</h3>
+                            <p>Supplied kayaking equipment and safety gear for the Inside Passage segment.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sponsor-tier">
+                    <h2 class="tier-title">Equipment Partners</h2>
+                    <div class="sponsor-items">
+                        <div class="sponsor-card">
+                            <h3>Sponsor Name</h3>
+                            <p>Cold weather gear and technical apparel for Arctic conditions.</p>
+                        </div>
+                        <div class="sponsor-card">
+                            <h3>Sponsor Name</h3>
+                            <p>Navigation and communication equipment for remote areas.</p>
+                        </div>
+                        <div class="sponsor-card">
+                            <h3>Sponsor Name</h3>
+                            <p>Camping equipment and shelter systems.</p>
+                        </div>
+                        <div class="sponsor-card">
+                            <h3>Sponsor Name</h3>
+                            <p>Nutrition and food supplies for extended wilderness travel.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sponsor-tier">
+                    <h2 class="tier-title">Supporting Partners</h2>
+                    <div class="sponsor-items">
+                        <div class="sponsor-card">
+                            <h3>Sponsor Name</h3>
+                            <p>Documentation equipment including cameras and recording devices.</p>
+                        </div>
+                        <div class="sponsor-card">
+                            <h3>Sponsor Name</h3>
+                            <p>Medical and first aid supplies.</p>
+                        </div>
+                        <div class="sponsor-card">
+                            <h3>Sponsor Name</h3>
+                            <p>Logistics and resupply coordination.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gratitude-section">
+                <h2>Thank You</h2>
+                <p>This expedition wouldn't have been possible without the belief and support of these sponsors. Their commitment to adventure, exploration, and human potential helped turn an ambitious dream into reality.</p>
+                <p>While these partnerships were established for the original expedition, the spirit of collaboration and support continues to inspire future adventures.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Under Human Power. All rights reserved.</p>
+            <p>A journey by Darrell J. Gardner</p>
+        </div>
+    </footer>
+
+    <script>
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

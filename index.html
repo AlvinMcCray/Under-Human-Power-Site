@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Under Human Power | Darrell J. Gardner</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">UNDER HUMAN POWER</div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="sponsors.html">Sponsors</a></li>
+                <li><a href="journey.html">Journey</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-left">
+            <div class="hero-content">
+                <p class="hero-tagline">5,700 MILES · SOLO · ENDURANCE</p>
+                <h1 class="hero-title">
+                    <span class="hero-under">UNDER</span><br>
+                    <span class="hero-human">HUMAN</span><br>
+                    <span class="hero-power">POWER.</span>
+                </h1>
+                <p class="hero-subtitle">A single expedition from the Mexican border to the Arctic Ocean. One man, three disciplines, zero motors.</p>
+            </div>
+        </div>
+        <div class="hero-right">
+            <div class="carousel">
+                <div class="carousel-track">
+                    <div class="carousel-slide active">
+                        <img src="darrell-kayaking.jpg" alt="Darrell kayaking through the Inside Passage">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="Darrell-Profile.png" alt="Darrell J. Gardner portrait">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="darrell-paddling.jpg" alt="Darrell paddling through coastal waters">
+                    </div>
+                </div>
+                <button class="carousel-arrow carousel-prev" aria-label="Previous slide">‹</button>
+                <button class="carousel-arrow carousel-next" aria-label="Next slide">›</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="trip-overview">
+        <div class="container">
+            <h2 class="section-title">The Expedition</h2>
+            <div class="trip-intro">
+                <p>From the sun-scorched Mexican border to the frozen reaches of the Arctic Circle, Darrell J. Gardner embarked on an unprecedented journey powered by nothing but human determination.</p>
+                <p>Following the Pacific Coast Highway, threading through the Inside Passage of British Columbia, and pushing north beyond the edge of civilization—all by hiking, kayaking, and sheer willpower.</p>
+            </div>
+
+            <div class="journey-stages">
+                <div class="stage">
+                    <div class="stage-icon">🥾</div>
+                    <h3>Hiking</h3>
+                    <p>Starting at the Mexican border, the journey began on foot along rugged coastal trails and mountain passes.</p>
+                </div>
+                <div class="stage">
+                    <div class="stage-icon">🛶</div>
+                    <h3>Kayaking</h3>
+                    <p>Navigating the legendary Inside Passage through British Columbia's coastal waters and wilderness.</p>
+                </div>
+                <div class="stage">
+                    <div class="stage-icon">🥾</div>
+                    <h3>Hiking North</h3>
+                    <p>The final push through the Yukon and into the Arctic Circle, where few dare to venture.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="media-preview">
+        <div class="container">
+            <h2 class="section-title">Experience the Journey</h2>
+            <div class="media-grid">
+                <div class="media-card">
+                    <div class="media-placeholder photo">
+                        <span>📸</span>
+                    </div>
+                    <h4>Photo Gallery</h4>
+                    <p>Stunning landscapes captured along the route</p>
+                </div>
+                <div class="media-card">
+                    <div class="media-placeholder video">
+                        <span>🎥</span>
+                    </div>
+                    <h4>Video Footage</h4>
+                    <p>First-hand documentation of the expedition</p>
+                </div>
+                <div class="media-card">
+                    <div class="media-placeholder audio">
+                        <span>🎙️</span>
+                    </div>
+                    <h4>Podcast</h4>
+                    <p>Stories and reflections from the trail</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Under Human Power. All rights reserved.</p>
+            <p>A journey by Darrell J. Gardner</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Carousel functionality
+        const slides = document.querySelectorAll('.carousel-slide');
+        const prevBtn = document.querySelector('.carousel-prev');
+        const nextBtn = document.querySelector('.carousel-next');
+        let currentSlide = 0;
+        let autoPlayInterval;
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.remove('active', 'prev');
+                if (i === index) {
+                    slide.classList.add('active');
+                } else if (i < index) {
+                    slide.classList.add('prev');
+                }
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        function startAutoPlay() {
+            autoPlayInterval = setInterval(nextSlide, 6000); // 6 seconds
+        }
+
+        function stopAutoPlay() {
+            clearInterval(autoPlayInterval);
+        }
+
+        // Arrow click handlers
+        nextBtn.addEventListener('click', () => {
+            stopAutoPlay();
+            nextSlide();
+            startAutoPlay();
+        });
+
+        prevBtn.addEventListener('click', () => {
+            stopAutoPlay();
+            prevSlide();
+            startAutoPlay();
+        });
+
+        // Start auto-play on page load
+        startAutoPlay();
+    </script>
+</body>
+</html>

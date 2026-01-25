@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Under Human Power</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">UNDER HUMAN POWER</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html" class="active">About</a></li>
+                <li><a href="sponsors.html">Sponsors</a></li>
+                <li><a href="journey.html">Journey</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>About Darrell</h1>
+        </div>
+    </section>
+
+    <section class="about-content">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image">
+                    <div class="image-placeholder">
+                        <span>Photo of Darrell</span>
+                    </div>
+                </div>
+                <div class="about-text">
+                    <h2>Darrell J. Gardner</h2>
+                    <p class="intro-text">Explorer. Adventurer. Storyteller.</p>
+                    
+                    <p>Darrell J. Gardner is an endurance explorer who believes in the purity of human-powered travel. His journey from the Mexican border to the Arctic Circle represents more than just physical distance—it's a testament to what's possible when you strip away modern conveniences and rely solely on your own two feet and a paddle.</p>
+                    
+                    <p>The "Under Human Power" expedition took Darrell through some of North America's most challenging and beautiful terrain. Starting at the U.S.-Mexico border, he hiked north along the Pacific Coast Highway, transitioned to kayak for the legendary Inside Passage through British Columbia, and continued on foot into the Yukon Territory and beyond the Arctic Circle.</p>
+                    
+                    <p>Throughout the journey, Darrell documented every step, paddle stroke, and moment of awe through photography, video, audio recordings, and detailed journals. His mission: to inspire others to reconnect with the natural world and discover what they're truly capable of.</p>
+                    
+                    <div class="quote">
+                        <p>"The slowness of human-powered travel forces you to see what you'd otherwise miss. Every mile earned, every camp made, every challenge overcome—it all means something when you've done it yourself."</p>
+                        <span>— Darrell J. Gardner</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-content">
+                <p>Interested in learning more about the expedition, booking Darrell for a speaking engagement, or discussing media opportunities?</p>
+                
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span class="contact-label">Email:</span>
+                        <a href="mailto:darrell@underhumanpower.com" class="contact-link">darrell@underhumanpower.com</a>
+                    </div>
+                </div>
+
+                <div class="speaking-info">
+                    <h3>Speaking Engagements</h3>
+                    <p>Darrell is available for:</p>
+                    <ul>
+                        <li>Keynote presentations on endurance and human potential</li>
+                        <li>Adventure film screenings with Q&A</li>
+                        <li>Workshops on expedition planning and wilderness skills</li>
+                        <li>Podcast and media interviews</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Under Human Power. All rights reserved.</p>
+            <p>A journey by Darrell J. Gardner</p>
+        </div>
+    </footer>
+
+    <script>
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
