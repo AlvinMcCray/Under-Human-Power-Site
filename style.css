@@ -314,42 +314,81 @@ a:hover {
     margin-bottom: 20px;
 }
 
-.journey-stages {
+.route-section {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: 1.8fr 1fr;
     gap: 40px;
-    margin-top: 60px;
+    align-items: start;
 }
 
-.stage {
+.map-container {
     background: #1a1a1a;
-    padding: 40px;
+    padding: 20px;
     border-radius: 8px;
-    text-align: center;
     border: 2px solid #333333;
+}
+
+.expedition-map {
+    width: 100%;
+    height: 750px;
+    border: none;
+    border-radius: 4px;
+}
+
+.map-note {
+    text-align: center;
+    color: #999999;
+    font-size: 13px;
+    font-style: italic;
+    margin-top: 15px;
+    margin-bottom: 0;
+}
+
+.stages-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.stage-card {
+    background: #1a1a1a;
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 4px solid #ff6600;
     transition: all 0.3s ease;
 }
 
-.stage:hover {
-    border-color: #ff6600;
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(255,102,0,0.2);
+.stage-card:hover {
+    background: #222222;
+    transform: translateX(5px);
 }
 
-.stage-icon {
-    font-size: 60px;
-    margin-bottom: 20px;
-}
-
-.stage h3 {
-    font-size: 32px;
+.stage-number {
+    font-family: 'Bebas Neue', sans-serif;
     color: #ff6600;
-    margin-bottom: 15px;
+    font-size: 16px;
+    margin-bottom: 5px;
+    letter-spacing: 1px;
 }
 
-.stage p {
-    color: #aaaaaa;
-    line-height: 1.8;
+.stage-title {
+    font-family: 'Bebas Neue', sans-serif;
+    color: #ffffff;
+    font-size: 20px;
+    margin-bottom: 5px;
+    line-height: 1.2;
+}
+
+.stage-meta {
+    color: #999999;
+    font-size: 13px;
+    margin-bottom: 8px;
+}
+
+.stage-distance {
+    font-family: 'Bebas Neue', sans-serif;
+    color: #ff6600;
+    font-size: 24px;
 }
 
 /* ===== MEDIA PREVIEW ===== */
@@ -899,6 +938,15 @@ a:hover {
 
     .section-title {
         font-size: 36px;
+    }
+
+    .route-section {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .expedition-map {
+        height: 400px;
     }
 
     .about-grid {
