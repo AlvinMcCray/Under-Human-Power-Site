@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Gallery | Under Human Power</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">UNDER HUMAN POWER</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="journey.html">Journey</a></li>
+                <li class="dropdown">
+                    <a href="trail-journal.html" class="active">Trail Journal</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="photo-gallery.html" class="active">Photo Gallery</a></li>
+                        <li><a href="maps-gps.html">Maps & GPS Data</a></li>
+                        <li><a href="journal-entries.html">Journal Entries</a></li>
+                        <li><a href="guestbook.html">Guestbook</a></li>
+                    </ul>
+                </li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="sponsors.html">Sponsors</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Photo Gallery</h1>
+            <p class="page-subtitle">Landscapes, moments, and milestones captured along the route</p>
+        </div>
+    </section>
+
+    <section class="journal-section photo-gallery-section">
+        <div class="container">
+            <div class="photo-grid">
+                <div class="photo-item">
+                    <img src="MtnTopLake.jpg" alt="Mountain lake with peaks">
+                </div>
+                <div class="photo-item">
+                    <img src="MtnTreeClouds.jpg" alt="Mountain trees and clouds">
+                </div>
+                <div class="photo-item">
+                    <img src="Mystery.jpg" alt="Trail marker">
+                </div>
+                <div class="photo-item">
+                    <img src="PeakAndValley.jpg" alt="Mountain peak and valley view">
+                </div>
+                <div class="photo-item">
+                    <img src="PinkFlower.jpg" alt="Pink wildflower">
+                </div>
+                <div class="photo-item">
+                    <img src="ScaryRidge.jpg" alt="Steep mountain ridge">
+                </div>
+                <div class="photo-item">
+                    <img src="SitkaReady.jpg" alt="Sitka the expedition dog">
+                </div>
+                <div class="photo-item">
+                    <img src="ValleyInTheMist.jpg" alt="Misty valley">
+                </div>
+                <div class="photo-item">
+                    <img src="WaterfallOverRocks.jpg" alt="Waterfall cascading over mossy rocks">
+                </div>
+                <div class="photo-item">
+                    <img src="DarrellAndPeak.jpg" alt="Darrell hiking with mountain backdrop">
+                </div>
+                <div class="photo-item">
+                    <img src="DarrellAtBorder.jpg" alt="Darrell at the border mural">
+                </div>
+                <div class="photo-item">
+                    <img src="DarrellAtWaterfall.jpg" alt="Darrell at waterfall">
+                </div>
+                <div class="photo-item">
+                    <img src="DarrellJumping.jpg" alt="Darrell jumping into water">
+                </div>
+                <div class="photo-item">
+                    <img src="Darrell-Kayaking.jpg" alt="Darrell kayaking">
+                </div>
+                <div class="photo-item">
+                    <img src="DarrellOnMtnTrail.jpg" alt="Darrell on mountain trail">
+                </div>
+                <div class="photo-item">
+                    <img src="Darrell-Paddling.jpg" alt="Darrell paddling through waves">
+                </div>
+                <div class="photo-item">
+                    <img src="DGatDomingoSpringsSign.jpg" alt="Darrell at Domingo Springs trailhead">
+                </div>
+                <div class="photo-item">
+                    <img src="JessAndDarrell.jpg" alt="Jess and Darrell on trail">
+                </div>
+                <div class="photo-item">
+                    <img src="Jubilant.jpg" alt="Jubilant celebration">
+                </div>
+                <div class="photo-item">
+                    <img src="MtnsRiverMist.jpg" alt="Mountains and river in mist">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Under Human Power. All rights reserved.</p>
+            <p>A journey by Darrell J. Gardner</p>
+        </div>
+    </footer>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <span class="lightbox-prev">&#10094;</span>
+        <span class="lightbox-next">&#10095;</span>
+        <img class="lightbox-content" id="lightbox-img">
+        <div class="lightbox-caption"></div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Lightbox functionality
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxCaption = document.querySelector('.lightbox-caption');
+        const closeBtn = document.querySelector('.lightbox-close');
+        const prevBtn = document.querySelector('.lightbox-prev');
+        const nextBtn = document.querySelector('.lightbox-next');
+        
+        const photoItems = document.querySelectorAll('.photo-item img');
+        let currentPhotoIndex = 0;
+
+        photoItems.forEach((img, index) => {
+            img.addEventListener('click', () => {
+                currentPhotoIndex = index;
+                showLightbox();
+            });
+        });
+
+        function showLightbox() {
+            const currentImg = photoItems[currentPhotoIndex];
+            lightboxImg.src = currentImg.src;
+            lightboxCaption.textContent = currentImg.alt;
+            lightbox.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            lightbox.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        closeBtn.addEventListener('click', closeLightbox);
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        prevBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            currentPhotoIndex = (currentPhotoIndex - 1 + photoItems.length) % photoItems.length;
+            showLightbox();
+        });
+
+        nextBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            currentPhotoIndex = (currentPhotoIndex + 1) % photoItems.length;
+            showLightbox();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (lightbox.style.display === 'block') {
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowLeft') {
+                    currentPhotoIndex = (currentPhotoIndex - 1 + photoItems.length) % photoItems.length;
+                    showLightbox();
+                }
+                if (e.key === 'ArrowRight') {
+                    currentPhotoIndex = (currentPhotoIndex + 1) % photoItems.length;
+                    showLightbox();
+                }
+            }
+        });
+    </script>
+</body>
+</html>

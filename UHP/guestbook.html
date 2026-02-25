@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guestbook | Under Human Power</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">UNDER HUMAN POWER</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="journey.html">Journey</a></li>
+                <li class="dropdown">
+                    <a href="trail-journal.html" class="active">Trail Journal</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="photo-gallery.html">Photo Gallery</a></li>
+                        <li><a href="maps-gps.html">Maps & GPS Data</a></li>
+                        <li><a href="journal-entries.html">Journal Entries</a></li>
+                        <li><a href="guestbook.html" class="active">Guestbook</a></li>
+                    </ul>
+                </li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="sponsors.html">Sponsors</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Guestbook</h1>
+            <p class="page-subtitle">Messages of support and encouragement sent during the expedition</p>
+        </div>
+    </section>
+
+    <section class="journal-section guestbook-section">
+        <div class="container">
+            <div class="guestbook-entries">
+                <div class="guestbook-entry">
+                    <div class="entry-meta">
+                        <span class="entry-author">Name</span>
+                        <span class="entry-date">Date</span>
+                    </div>
+                    <p class="entry-message">Messages from supporters will be displayed here—notes of encouragement, well-wishes, and words of inspiration sent to Darrell during his journey from Mexico to the Arctic.</p>
+                </div>
+
+                <div class="guestbook-entry">
+                    <div class="entry-meta">
+                        <span class="entry-author">Name</span>
+                        <span class="entry-date">Date</span>
+                    </div>
+                    <p class="entry-message">The guestbook preserves the voices of those who followed along, offering support from home while the expedition pushed north through thousands of miles of wilderness.</p>
+                </div>
+
+                <div class="guestbook-entry">
+                    <div class="entry-meta">
+                        <span class="entry-author">Name</span>
+                        <span class="entry-date">Date</span>
+                    </div>
+                    <p class="entry-message">Each message represents a connection between the trail and home—a reminder that even in the most remote corners of the route, the expedition was not undertaken alone.</p>
+                </div>
+            </div>
+
+            <div class="section-note">
+                <p>Historic guestbook entries will be added as they are recovered from expedition archives.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Under Human Power. All rights reserved.</p>
+            <p>A journey by Darrell J. Gardner</p>
+        </div>
+    </footer>
+
+    <script>
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

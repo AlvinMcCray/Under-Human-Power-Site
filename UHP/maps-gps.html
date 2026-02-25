@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maps & GPS Data | Under Human Power</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">UNDER HUMAN POWER</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="journey.html">Journey</a></li>
+                <li class="dropdown">
+                    <a href="trail-journal.html" class="active">Trail Journal</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="photo-gallery.html">Photo Gallery</a></li>
+                        <li><a href="maps-gps.html" class="active">Maps & GPS Data</a></li>
+                        <li><a href="journal-entries.html">Journal Entries</a></li>
+                        <li><a href="guestbook.html">Guestbook</a></li>
+                    </ul>
+                </li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="sponsors.html">Sponsors</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Maps & GPS Data</h1>
+            <p class="page-subtitle">Route maps, elevation profiles, and GPS tracking data</p>
+        </div>
+    </section>
+
+    <section class="journal-section maps-section">
+        <div class="container">
+            <div class="maps-grid">
+                <div class="map-item">
+                    <div class="map-placeholder">
+                        <span>🗺️</span>
+                    </div>
+                    <h4>Stage I: Pacific Crest Trail</h4>
+                    <p>CA, OR & WA - 2,650 miles</p>
+                </div>
+
+                <div class="map-item">
+                    <div class="map-placeholder">
+                        <span>🗺️</span>
+                    </div>
+                    <h4>Stage II: The Bridge</h4>
+                    <p>WA - 250 miles</p>
+                </div>
+
+                <div class="map-item">
+                    <div class="map-placeholder">
+                        <span>🗺️</span>
+                    </div>
+                    <h4>Stage III: Inside Passage</h4>
+                    <p>WA, BC & AK - 1,400 miles</p>
+                </div>
+
+                <div class="map-item">
+                    <div class="map-placeholder">
+                        <span>🗺️</span>
+                    </div>
+                    <h4>Stage IV: Yukon River</h4>
+                    <p>AK, BC & YT - 900 miles</p>
+                </div>
+
+                <div class="map-item">
+                    <div class="map-placeholder">
+                        <span>🗺️</span>
+                    </div>
+                    <h4>Stages V & VI: Brooks Range</h4>
+                    <p>AK - 500 miles</p>
+                </div>
+            </div>
+
+            <div class="section-note">
+                <p>Detailed maps and GPS data files available soon.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Under Human Power. All rights reserved.</p>
+            <p>A journey by Darrell J. Gardner</p>
+        </div>
+    </footer>
+
+    <script>
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

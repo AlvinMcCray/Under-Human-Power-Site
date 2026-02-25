@@ -12,13 +12,24 @@
 <body>
     <nav class="navbar">
         <div class="nav-container">
-            <div class="logo">UNDER HUMAN POWER</div>
+            <a href="index.html" class="logo">UNDER HUMAN POWER</a>
             <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="sponsors.html">Sponsors</a></li>
-                <li><a href="journey.html" class="active">Journey</a></li>
-            </ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="journey.html">Journey</a></li>
+    <li class="dropdown">
+        <a href="trail-journal.html">Trail Journal</a>
+        <ul class="dropdown-menu">
+            <li><a href="photo-gallery.html">Photo Gallery</a></li>
+            <li><a href="maps-gps.html">Maps & GPS Data</a></li>
+            <li><a href="journal-entries.html">Journal Entries</a></li>
+            <li><a href="guestbook.html">Guestbook</a></li>
+            
+        </ul>
+    </li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="sponsors.html">Sponsors</a></li>
+    <li><a href="stage-layout-mockups.html" style="color: #999999;">Stage Mockups (Temp)</a></li>
+</ul>
             <div class="mobile-menu">
                 <span></span>
                 <span></span>
@@ -36,15 +47,17 @@
     <section class="map-section">
         <div class="container">
             <div class="map-intro">
-                <p>Follow Darrell's route from the Mexican border to the Arctic Circle. Every point on this map represents a milestone in an extraordinary journey of human-powered travel.</p>
+                <p>The points shown mark the places where location data was recorded—checkpoints used to document progress, plan routes, and preserve a record of the journey. Together, they offer a guided view into a much larger, continuous expedition completed entirely under human power, even as some sections remain beyond the map.</p>
             </div>
             
             <div class="map-container">
-                <div class="map-placeholder">
-                    <p>🗺️</p>
-                    <p>Interactive Map Coming Soon</p>
-                    <p class="map-note">SPOT tracking data will be displayed here</p>
-                </div>
+                <iframe 
+                    src="https://www.google.com/maps/d/u/0/embed?mid=1bTMgz0sqUl6sz_CQ_pj4nmaVXqslDt4&ehbc=2E312F&noprof=1" 
+                    width="100%" 
+                    height="600" 
+                    style="border:none; border-radius: 4px;"
+                    allowfullscreen="">
+                </iframe>
             </div>
 
             <div class="map-legend">
@@ -69,54 +82,61 @@
 
     <section class="timeline-section">
         <div class="container">
-            <h2 class="section-title">Journey Timeline</h2>
+            <h2 class="section-title">Expedition Stages</h2>
             
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-marker hiking">🥾</div>
-                    <div class="timeline-content">
-                        <h3>Mexican Border to Northern California</h3>
-                        <p class="timeline-date">Phase 1: Hiking</p>
-                        <p>Beginning at the U.S.-Mexico border, Darrell hiked north along the Pacific Coast, traversing diverse terrain from desert landscapes to coastal trails. The journey covered hundreds of miles of the iconic Pacific Coast Highway route.</p>
-                        <div class="timeline-stats">
-                            <span><strong>Distance:</strong> TBD miles</span>
-                            <span><strong>Duration:</strong> TBD days</span>
-                        </div>
+            <div class="stages-badges">
+                <div class="stage-badge-card">
+                    <div class="badge-header">
+                        <div class="badge-number">I</div>
+                        <div class="badge-title">THE PACIFIC CREST TRAIL</div>
+                    </div>
+                    <div class="badge-details">
+                        <div class="badge-location">CA, OR & WA</div>
+                        <div class="badge-distance">2,650 miles</div>
                     </div>
                 </div>
 
-                <div class="timeline-item">
-                    <div class="timeline-marker kayaking">🛶</div>
-                    <div class="timeline-content">
-                        <h3>Inside Passage, British Columbia</h3>
-                        <p class="timeline-date">Phase 2: Kayaking</p>
-                        <p>Transitioning to water, Darrell paddled through the legendary Inside Passage—a maze of protected waterways, islands, and fjords along the BC coast. This segment presented unique challenges including tidal navigation, weather systems, and wildlife encounters.</p>
-                        <div class="timeline-stats">
-                            <span><strong>Distance:</strong> TBD nautical miles</span>
-                            <span><strong>Duration:</strong> TBD days</span>
-                        </div>
+                <div class="stage-badge-card">
+                    <div class="badge-header">
+                        <div class="badge-number">II</div>
+                        <div class="badge-title">"THE BRIDGE"</div>
+                    </div>
+                    <div class="badge-details">
+                        <div class="badge-location">WA</div>
+                        <div class="badge-distance">250 miles</div>
                     </div>
                 </div>
 
-                <div class="timeline-item">
-                    <div class="timeline-marker hiking">🥾</div>
-                    <div class="timeline-content">
-                        <h3>Yukon Territory to Arctic Circle</h3>
-                        <p class="timeline-date">Phase 3: Hiking North</p>
-                        <p>The final push took Darrell through the Yukon and into the Arctic, where few venture on foot. This segment tested every skill and ounce of determination, pushing through extreme weather, isolation, and the raw wilderness of the Far North.</p>
-                        <div class="timeline-stats">
-                            <span><strong>Distance:</strong> TBD miles</span>
-                            <span><strong>Duration:</strong> TBD days</span>
-                        </div>
+                <div class="stage-badge-card">
+                    <div class="badge-header">
+                        <div class="badge-number">III</div>
+                        <div class="badge-title">THE INSIDE PASSAGE</div>
+                    </div>
+                    <div class="badge-details">
+                        <div class="badge-location">WA, BC & AK</div>
+                        <div class="badge-distance">1,400 miles</div>
                     </div>
                 </div>
 
-                <div class="timeline-item">
-                    <div class="timeline-marker checkpoint">🎯</div>
-                    <div class="timeline-content">
-                        <h3>Arctic Circle</h3>
-                        <p class="timeline-date">Journey Complete</p>
-                        <p>After months of human-powered travel, Darrell crossed into the Arctic Circle—a symbolic and physical endpoint representing thousands of miles traveled by foot and paddle alone.</p>
+                <div class="stage-badge-card">
+                    <div class="badge-header">
+                        <div class="badge-number">IV</div>
+                        <div class="badge-title">THE YUKON RIVER</div>
+                    </div>
+                    <div class="badge-details">
+                        <div class="badge-location">AK, BC & YT</div>
+                        <div class="badge-distance">900 miles</div>
+                    </div>
+                </div>
+
+                <div class="stage-badge-card">
+                    <div class="badge-header">
+                        <div class="badge-number">V/VI</div>
+                        <div class="badge-title">THE BROOKS RANGE<br>& THE ARCTIC OCEAN</div>
+                    </div>
+                    <div class="badge-details">
+                        <div class="badge-location">AK</div>
+                        <div class="badge-distance">500 miles</div>
                     </div>
                 </div>
             </div>

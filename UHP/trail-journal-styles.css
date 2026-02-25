@@ -1,0 +1,236 @@
+/* ===== TRAIL JOURNAL PAGE ===== */
+
+/* Journal Section Base */
+.journal-section {
+    padding: 80px 0;
+}
+
+.journal-section:nth-child(even) {
+    background: #222222;
+}
+
+.journal-section:nth-child(odd) {
+    background: #2a2a2a;
+}
+
+.section-header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 60px;
+}
+
+.section-intro {
+    color: #aaaaaa;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-top: 15px;
+}
+
+.section-note {
+    text-align: center;
+    margin-top: 40px;
+    padding: 20px;
+    background: #1a1a1a;
+    border-radius: 8px;
+    border-left: 4px solid #ff6600;
+}
+
+.section-note p {
+    color: #999999;
+    font-style: italic;
+    font-size: 14px;
+    margin: 0;
+}
+
+/* Photo Gallery Section */
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.photo-placeholder {
+    aspect-ratio: 4/3;
+    background: #1a1a1a;
+    border: 2px solid #333333;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.photo-placeholder:hover {
+    border-color: #ff6600;
+    transform: translateY(-5px);
+}
+
+.photo-placeholder span {
+    font-size: 60px;
+    margin-bottom: 10px;
+    opacity: 0.3;
+}
+
+.photo-placeholder p {
+    color: #666666;
+    font-size: 14px;
+}
+
+/* Maps Section */
+.maps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.map-item {
+    text-align: center;
+}
+
+.map-placeholder {
+    aspect-ratio: 3/2;
+    background: #1a1a1a;
+    border: 2px solid #333333;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.map-placeholder:hover {
+    border-color: #ff6600;
+}
+
+.map-placeholder span {
+    font-size: 50px;
+    opacity: 0.3;
+}
+
+.map-item h4 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    color: #ff6600;
+    margin-bottom: 5px;
+}
+
+.map-item p {
+    color: #999999;
+    font-size: 14px;
+}
+
+/* Journal Entries Section */
+.journal-entries {
+    display: grid;
+    gap: 40px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.journal-entry {
+    background: #1a1a1a;
+    padding: 30px;
+    border-radius: 8px;
+    border-left: 4px solid #ff6600;
+    transition: all 0.3s ease;
+}
+
+.journal-entry:hover {
+    background: #222222;
+    transform: translateX(5px);
+}
+
+.entry-date {
+    color: #ff6600;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+.entry-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    color: #ffffff;
+    margin-bottom: 15px;
+}
+
+.entry-excerpt {
+    color: #cccccc;
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+
+.entry-link {
+    color: #ff6600;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+}
+
+.entry-link:hover {
+    color: #ff8833;
+}
+
+/* Guestbook Section */
+.guestbook-entries {
+    display: grid;
+    gap: 25px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.guestbook-entry {
+    background: #1a1a1a;
+    padding: 25px;
+    border-radius: 8px;
+    border: 2px solid #333333;
+}
+
+.entry-meta {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #333333;
+}
+
+.entry-author {
+    color: #ff6600;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.entry-date {
+    color: #666666;
+    font-size: 14px;
+}
+
+.entry-message {
+    color: #cccccc;
+    line-height: 1.8;
+    font-size: 15px;
+    margin: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .photo-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .maps-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .journal-section {
+        padding: 60px 0;
+    }
+}

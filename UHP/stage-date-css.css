@@ -1,0 +1,18 @@
+/* Add this CSS to your style.css file */
+
+/* For index.html stage cards */
+.stage-date {
+    color: #999999;
+    font-size: 13px;
+    margin-top: 8px;
+    font-weight: 400;
+}
+
+/* For journey.html badge cards */
+.badge-date {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    color: #999999;
+    margin-top: 10px;
+    letter-spacing: 1px;
+}

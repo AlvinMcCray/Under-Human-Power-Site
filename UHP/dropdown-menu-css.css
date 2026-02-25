@@ -1,0 +1,69 @@
+/* Add this CSS to the end of your style.css file */
+
+/* Dropdown Menu Styles */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #1a1a1a;
+    list-style: none;
+    padding: 10px 0;
+    margin: 0;
+    min-width: 200px;
+    border: 2px solid #ff6600;
+    border-top: none;
+    z-index: 1000;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu li {
+    margin: 0;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 12px 20px;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.dropdown-menu a:hover {
+    background: #ff6600;
+    color: #ffffff;
+    padding-left: 25px;
+}
+
+.dropdown-menu a.active {
+    color: #ff6600;
+    font-weight: 700;
+}
+
+/* Mobile dropdown */
+@media (max-width: 768px) {
+    .dropdown-menu {
+        position: static;
+        display: none;
+        border: none;
+        padding-left: 20px;
+        background: transparent;
+    }
+    
+    .dropdown.active .dropdown-menu {
+        display: block;
+    }
+    
+    .dropdown > a::after {
+        content: ' ▼';
+        font-size: 10px;
+    }
+}

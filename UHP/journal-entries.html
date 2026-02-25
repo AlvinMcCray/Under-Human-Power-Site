@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journal Entries | Under Human Power</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">UNDER HUMAN POWER</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="journey.html">Journey</a></li>
+                <li class="dropdown">
+                    <a href="trail-journal.html" class="active">Trail Journal</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="photo-gallery.html">Photo Gallery</a></li>
+                        <li><a href="maps-gps.html">Maps & GPS Data</a></li>
+                        <li><a href="journal-entries.html" class="active">Journal Entries</a></li>
+                        <li><a href="guestbook.html">Guestbook</a></li>
+                    </ul>
+                </li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="sponsors.html">Sponsors</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Journal Entries</h1>
+            <p class="page-subtitle">Field notes, reflections, and stories from the trail</p>
+        </div>
+    </section>
+
+    <section class="journal-section entries-section">
+        <div class="container">
+            <div class="journal-entries">
+                <div class="journal-entry">
+                    <div class="entry-date">Coming Soon</div>
+                    <h3 class="entry-title">First Entry Title</h3>
+                    <p class="entry-excerpt">Journal entries from the expedition will be published here, offering insights into the daily challenges, discoveries, and moments that defined this journey.</p>
+                    <a href="#" class="entry-link">Read more →</a>
+                </div>
+
+                <div class="journal-entry">
+                    <div class="entry-date">Coming Soon</div>
+                    <h3 class="entry-title">Second Entry Title</h3>
+                    <p class="entry-excerpt">Each entry provides a window into the expedition experience—the landscapes encountered, the weather endured, and the small victories that kept the journey moving forward.</p>
+                    <a href="#" class="entry-link">Read more →</a>
+                </div>
+
+                <div class="journal-entry">
+                    <div class="entry-date">Coming Soon</div>
+                    <h3 class="entry-title">Third Entry Title</h3>
+                    <p class="entry-excerpt">From the desert heat of the Mexican border to the frozen expanse of the Arctic, these entries document what it takes to travel 5,700 miles under human power alone.</p>
+                    <a href="#" class="entry-link">Read more →</a>
+                </div>
+            </div>
+
+            <div class="section-note">
+                <p>Journal entries will be added as they are transcribed from field notes.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Under Human Power. All rights reserved.</p>
+            <p>A journey by Darrell J. Gardner</p>
+        </div>
+    </footer>
+
+    <script>
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

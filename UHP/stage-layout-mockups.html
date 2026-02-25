@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stage Page Layout Options</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #2a2a2a;
+            color: #ffffff;
+            padding: 40px 20px;
+        }
+
+        h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 48px;
+            color: #ff6600;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .intro {
+            text-align: center;
+            color: #aaaaaa;
+            margin-bottom: 60px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .option-container {
+            margin-bottom: 80px;
+            background: #1a1a1a;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 3px solid #333333;
+        }
+
+        .option-header {
+            background: #ff6600;
+            padding: 20px 30px;
+            color: #ffffff;
+        }
+
+        .option-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 32px;
+            margin-bottom: 5px;
+        }
+
+        .option-description {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .mockup {
+            padding: 30px;
+            background: #ffffff;
+            color: #000000;
+            min-height: 600px;
+        }
+
+        /* OPTION A: Storytelling */
+        .option-a .hero-mockup {
+            height: 300px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            margin-bottom: 30px;
+        }
+
+        .option-a .content-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
+
+        .option-a .stage-overview {
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #ff6600;
+        }
+
+        .option-a .stats-sidebar {
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .option-a .timeline-item {
+            background: #f5f5f5;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            border-left: 3px solid #ff6600;
+        }
+
+        .option-a .media-grid-mockup {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .option-a .media-item {
+            aspect-ratio: 4/3;
+            background: #ddd;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: #666;
+        }
+
+        /* OPTION B: Media-First */
+        .option-b .stage-header {
+            background: #f5f5f5;
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 30px;
+            border-radius: 8px;
+        }
+
+        .option-b .stage-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 15px;
+        }
+
+        .option-b .stat-item {
+            text-align: center;
+        }
+
+        .option-b .stat-number {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 32px;
+            color: #ff6600;
+        }
+
+        .option-b .big-media-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .option-b .media-large {
+            aspect-ratio: 1;
+            background: #ddd;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: #666;
+        }
+
+        .option-b .map-mockup {
+            height: 250px;
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+        }
+
+        /* OPTION C: Chapters */
+        .option-c .chapter-intro {
+            background: #f5f5f5;
+            padding: 25px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+        }
+
+        .option-c .chapter-section {
+            margin-bottom: 40px;
+            padding-bottom: 40px;
+            border-bottom: 2px solid #eee;
+        }
+
+        .option-c .chapter-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 28px;
+            color: #ff6600;
+            margin-bottom: 15px;
+        }
+
+        .option-c .chapter-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .option-c .chapter-text {
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 4px;
+        }
+
+        .option-c .chapter-media {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .option-c .chapter-media-item {
+            aspect-ratio: 4/3;
+            background: #ddd;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            color: #666;
+        }
+
+        /* OPTION D: Dashboard */
+        .option-d .split-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            min-height: 600px;
+        }
+
+        .option-d .map-side {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            position: relative;
+        }
+
+        .option-d .map-marker {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border-radius: 50%;
+            border: 3px solid #ff6600;
+        }
+
+        .option-d .marker-1 { top: 20%; left: 30%; }
+        .option-d .marker-2 { top: 40%; left: 50%; }
+        .option-d .marker-3 { top: 60%; left: 40%; }
+
+        .option-d .content-side {
+            background: #f5f5f5;
+            padding: 30px;
+            overflow-y: auto;
+        }
+
+        .option-d .scroll-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            border-left: 4px solid #ff6600;
+        }
+
+        .option-d .inline-media {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .option-d .inline-media-item {
+            aspect-ratio: 16/9;
+            background: #ddd;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            color: #666;
+        }
+
+        .mockup-label {
+            font-size: 11px;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .pros-cons {
+            background: #222222;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 4px;
+        }
+
+        .pros-cons h4 {
+            color: #ff6600;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .pros-cons ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .pros-cons li {
+            color: #aaaaaa;
+            font-size: 13px;
+            margin-bottom: 5px;
+            padding-left: 15px;
+            position: relative;
+        }
+
+        .pros-cons li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #ff6600;
+        }
+    </style>
+</head>
+<body>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">UNDER HUMAN POWER</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="journey.html">Journey</a></li>
+                <li class="dropdown">
+                    <a href="trail-journal.html">Trail Journal</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="photo-gallery.html">Photo Gallery</a></li>
+                        <li><a href="maps-gps.html">Maps & GPS Data</a></li>
+                        <li><a href="journal-entries.html">Journal Entries</a></li>
+                        <li><a href="guestbook.html">Guestbook</a></li>
+                    </ul>
+                </li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="sponsors.html">Sponsors</a></li>
+                <li><a href="stage-layout-mockups.html" class="active" style="color: #999999;">Stage Mockups (Temp)</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <div style="padding: 40px 20px;">
+    <h1>Stage Page Layout Options</h1>
+    <div class="intro">
+        <p>Here are 4 different approaches to displaying Stage I: Pacific Crest Trail (2,650 miles, 2004-2005). Each handles photos, videos, maps, and narrative differently.</p>
+    </div>
+
+    <!-- OPTION A: STORYTELLING -->
+    <div class="option-container option-a">
+        <div class="option-header">
+            <div class="option-title">Option A: Storytelling Layout</div>
+            <div class="option-description">Hero image, chronological timeline, mixed media, stats sidebar</div>
+        </div>
+        <div class="mockup">
+            <div class="hero-mockup">HERO IMAGE: Iconic PCT Moment</div>
+            
+            <div class="content-grid">
+                <div class="main-content">
+                    <div class="mockup-label">Stage Overview</div>
+                    <div class="stage-overview">
+                        <h3 style="font-family: 'Bebas Neue', sans-serif; font-size: 24px; margin-bottom: 10px;">Stage I: Pacific Crest Trail</h3>
+                        <p style="font-size: 13px; line-height: 1.6; color: #666;">2,650 miles through California, Oregon, and Washington. Beginning at the Mexican border in April 2004, the journey followed the spine of the Sierra Nevada and Cascade ranges, crossing deserts, alpine passes, and volcanic peaks before reaching the Canadian border in September 2005.</p>
+                    </div>
+
+                    <div class="mockup-label" style="margin-top: 30px;">Timeline / Key Milestones</div>
+                    <div class="timeline-item">
+                        <strong style="color: #ff6600;">Mile 0 - Mexican Border</strong><br>
+                        <span style="font-size: 12px; color: #666;">April 2004 - Journey begins at Campo, CA</span>
+                    </div>
+                    <div class="timeline-item">
+                        <strong style="color: #ff6600;">Mile 702 - Kennedy Meadows</strong><br>
+                        <span style="font-size: 12px; color: #666;">Transition from desert to Sierra Nevada</span>
+                    </div>
+                    <div class="timeline-item">
+                        <strong style="color: #ff6600;">Mile 1,094 - Forester Pass</strong><br>
+                        <span style="font-size: 12px; color: #666;">Highest point on the PCT at 13,153 feet</span>
+                    </div>
+
+                    <div class="mockup-label" style="margin-top: 30px;">Photos & Videos</div>
+                    <div class="media-grid-mockup">
+                        <div class="media-item">Photo 1</div>
+                        <div class="media-item">Video 1</div>
+                        <div class="media-item">Photo 2</div>
+                        <div class="media-item">Photo 3</div>
+                        <div class="media-item">Photo 4</div>
+                        <div class="media-item">Video 2</div>
+                    </div>
+                </div>
+
+                <div class="sidebar">
+                    <div class="mockup-label">Stats</div>
+                    <div class="stats-sidebar">
+                        <div style="margin-bottom: 15px;">
+                            <div style="font-family: 'Bebas Neue', sans-serif; font-size: 32px; color: #ff6600;">2,650</div>
+                            <div style="font-size: 12px; color: #666;">Total Miles</div>
+                        </div>
+                        <div style="margin-bottom: 15px;">
+                            <div style="font-family: 'Bebas Neue', sans-serif; font-size: 32px; color: #ff6600;">489,000 ft</div>
+                            <div style="font-size: 12px; color: #666;">Elevation Gain</div>
+                        </div>
+                        <div style="margin-bottom: 15px;">
+                            <div style="font-family: 'Bebas Neue', sans-serif; font-size: 32px; color: #ff6600;">147</div>
+                            <div style="font-size: 12px; color: #666;">Days</div>
+                        </div>
+                    </div>
+
+                    <div class="mockup-label" style="margin-top: 20px;">Route Map</div>
+                    <div style="height: 250px; background: #ddd; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: #666; font-size: 14px;">Interactive Map</div>
+                </div>
+            </div>
+        </div>
+        <div class="pros-cons">
+            <h4>✓ Best For:</h4>
+            <ul>
+                <li>Complete story with context</li>
+                <li>Highlighting key moments chronologically</li>
+                <li>Readers who want the full narrative</li>
+            </ul>
+            <h4 style="margin-top: 15px;">✗ Drawbacks:</h4>
+            <ul>
+                <li>Media is secondary to story</li>
+                <li>Lots of scrolling for long stages</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- OPTION B: MEDIA-FIRST -->
+    <div class="option-container option-b">
+        <div class="option-header">
+            <div class="option-title">Option B: Media-First Layout</div>
+            <div class="option-description">Stats header, large photo/video grid, minimal text - National Geographic style</div>
+        </div>
+        <div class="mockup">
+            <div class="stage-header">
+                <h2 style="font-family: 'Bebas Neue', sans-serif; font-size: 36px; margin-bottom: 10px;">Stage I: Pacific Crest Trail</h2>
+                <p style="color: #666; font-size: 14px;">California, Oregon & Washington • 2004-2005</p>
+                <div class="stage-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">2,650</div>
+                        <div style="font-size: 12px; color: #666;">Miles</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">147</div>
+                        <div style="font-size: 12px; color: #666;">Days</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">13,153 ft</div>
+                        <div style="font-size: 12px; color: #666;">Highest Point</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mockup-label">Photo & Video Gallery</div>
+            <div class="big-media-grid">
+                <div class="media-large">Photo 1</div>
+                <div class="media-large">Photo 2</div>
+                <div class="media-large">Video 1</div>
+                <div class="media-large">Photo 3</div>
+                <div class="media-large">Photo 4</div>
+                <div class="media-large">Photo 5</div>
+                <div class="media-large">Video 2</div>
+                <div class="media-large">Photo 6</div>
+            </div>
+
+            <div class="mockup-label">Route Map</div>
+            <div class="map-mockup">PCT Route: Mexico → Canada</div>
+
+            <div style="background: #f5f5f5; padding: 25px; margin-top: 30px; border-radius: 8px;">
+                <h3 style="font-family: 'Bebas Neue', sans-serif; font-size: 24px; margin-bottom: 10px;">The Journey</h3>
+                <p style="font-size: 14px; line-height: 1.7; color: #666;">Brief narrative description of the stage. 2-3 paragraphs maximum. Focus on the experience, challenges, and highlights without overwhelming detail.</p>
+            </div>
+        </div>
+        <div class="pros-cons">
+            <h4>✓ Best For:</h4>
+            <ul>
+                <li>Visual storytelling</li>
+                <li>Lots of great photos/videos</li>
+                <li>Quick, impactful experience</li>
+            </ul>
+            <h4 style="margin-top: 15px;">✗ Drawbacks:</h4>
+            <ul>
+                <li>Less context and detail</li>
+                <li>Can feel like just a gallery</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- OPTION C: CHAPTERS -->
+    <div class="option-container option-c">
+        <div class="option-header">
+            <div class="option-title">Option C: Chapters Layout</div>
+            <div class="option-description">Stage broken into geographic sections, each with photos/videos/text - Progressive storytelling</div>
+        </div>
+        <div class="mockup">
+            <div class="chapter-intro">
+                <h2 style="font-family: 'Bebas Neue', sans-serif; font-size: 32px; margin-bottom: 10px;">Stage I: Pacific Crest Trail</h2>
+                <p style="color: #666; font-size: 14px; line-height: 1.6;">2,650 miles • 2004-2005 • California, Oregon, Washington</p>
+                <p style="margin-top: 15px; font-size: 14px; line-height: 1.6; color: #333;">Starting at the Mexican border in April 2004, this stage followed the legendary Pacific Crest Trail through three states and two years, broken into five distinct chapters.</p>
+            </div>
+
+            <div class="chapter-section">
+                <div class="chapter-title">Chapter 1: Southern California Desert</div>
+                <div class="chapter-content">
+                    <div class="chapter-text">
+                        <p style="font-size: 13px; line-height: 1.7; color: #666;">Miles 0-700 • April-May 2004</p>
+                        <p style="margin-top: 10px; font-size: 14px; line-height: 1.7; color: #333;">The journey began in the scorching Sonoran Desert. Water sources were scarce, temperatures extreme, and the terrain unforgiving...</p>
+                    </div>
+                    <div class="chapter-media">
+                        <div class="chapter-media-item">Photo 1</div>
+                        <div class="chapter-media-item">Photo 2</div>
+                        <div class="chapter-media-item">Video 1</div>
+                        <div class="chapter-media-item">Photo 3</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chapter-section">
+                <div class="chapter-title">Chapter 2: Sierra Nevada</div>
+                <div class="chapter-content">
+                    <div class="chapter-text">
+                        <p style="font-size: 13px; line-height: 1.7; color: #666;">Miles 700-1,100 • June-July 2004</p>
+                        <p style="margin-top: 10px; font-size: 14px; line-height: 1.7; color: #333;">Entering the High Sierra meant alpine passes, snowfields, and the most spectacular terrain of the entire PCT...</p>
+                    </div>
+                    <div class="chapter-media">
+                        <div class="chapter-media-item">Photo 4</div>
+                        <div class="chapter-media-item">Photo 5</div>
+                        <div class="chapter-media-item">Photo 6</div>
+                        <div class="chapter-media-item">Video 2</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chapter-section" style="border-bottom: none;">
+                <div class="chapter-title">Chapter 3: Northern California</div>
+                <div style="text-align: center; color: #999; font-size: 13px; padding: 20px;">
+                    + 2 more chapters (Cascades, Washington)
+                </div>
+            </div>
+        </div>
+        <div class="pros-cons">
+            <h4>✓ Best For:</h4>
+            <ul>
+                <li>Long stages that need structure</li>
+                <li>Organizing media by location/theme</li>
+                <li>Progressive storytelling</li>
+                <li>Easy to add content over time</li>
+            </ul>
+            <h4 style="margin-top: 15px;">✗ Drawbacks:</h4>
+            <ul>
+                <li>Requires deciding how to break it up</li>
+                <li>More complex to build</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- OPTION D: DASHBOARD -->
+    <div class="option-container option-d">
+        <div class="option-header">
+            <div class="option-title">Option D: Dashboard / Split-Screen</div>
+            <div class="option-description">Interactive map on left, scrolling content on right - Modern, immersive</div>
+        </div>
+        <div class="mockup">
+            <div class="split-layout">
+                <div class="map-side">
+                    <div>Interactive Route Map</div>
+                    <div class="map-marker marker-1"></div>
+                    <div class="map-marker marker-2"></div>
+                    <div class="map-marker marker-3"></div>
+                </div>
+                <div class="content-side">
+                    <h2 style="font-family: 'Bebas Neue', sans-serif; font-size: 28px; margin-bottom: 20px;">Stage I: Pacific Crest Trail</h2>
+                    
+                    <div class="scroll-section">
+                        <h4 style="font-size: 16px; margin-bottom: 10px;">Southern California</h4>
+                        <p style="font-size: 13px; line-height: 1.6; color: #666;">Starting at Campo, the trail headed north through desert terrain...</p>
+                        <div class="inline-media">
+                            <div class="inline-media-item">Photo 1</div>
+                            <div class="inline-media-item">Photo 2</div>
+                        </div>
+                    </div>
+
+                    <div class="scroll-section">
+                        <h4 style="font-size: 16px; margin-bottom: 10px;">Sierra Nevada</h4>
+                        <p style="font-size: 13px; line-height: 1.6; color: #666;">Climbing into the high country meant snow, passes, and stunning alpine lakes...</p>
+                        <div class="inline-media">
+                            <div class="inline-media-item">Video 1</div>
+                            <div class="inline-media-item">Photo 3</div>
+                        </div>
+                    </div>
+
+                    <div class="scroll-section">
+                        <h4 style="font-size: 16px; margin-bottom: 10px;">Oregon & Washington</h4>
+                        <p style="font-size: 13px; line-height: 1.6; color: #666;">Volcanic peaks and endless forests marked the final push north...</p>
+                        <div class="inline-media">
+                            <div class="inline-media-item">Photo 4</div>
+                            <div class="inline-media-item">Photo 5</div>
+                        </div>
+                    </div>
+
+                    <div style="text-align: center; color: #999; font-size: 12px; margin-top: 20px;">
+                        (As you scroll, markers on map highlight on left)
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pros-cons">
+            <h4>✓ Best For:</h4>
+            <ul>
+                <li>Very interactive, modern feel</li>
+                <li>Map always visible for context</li>
+                <li>Engaging user experience</li>
+            </ul>
+            <h4 style="margin-top: 15px;">✗ Drawbacks:</h4>
+            <ul>
+                <li>More complex to build</li>
+                <li>Harder on mobile devices</li>
+                <li>Requires JavaScript sync</li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+</html>
+    </div>
+
+    <script>
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
