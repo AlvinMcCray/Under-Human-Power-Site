@@ -290,6 +290,27 @@
             height: 36px;
             border-width: 4px;
         }
+        .map-reset-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #ff6600;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 16px;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+}
+
+.map-reset-btn:hover {
+    background: #ff8833;
+    transform: scale(1.05);
+}
     </style>
 </head>
 <body>
@@ -482,7 +503,8 @@
                 </div>
             </div>
 
-            <div class="map-section">
+           <div class="map-section" style="position: relative;">
+    <button class="map-reset-btn" id="resetMapBtn">Reset View</button>
                 <div id="map"></div>
             </div>
         </div>
@@ -510,6 +532,16 @@
                 </div>
             </div>
         </div>
+        <div class="stage-navigation">
+    <div></div>
+    <a href="stage-2-bridge.html" class="stage-nav-btn">
+        <div>
+            <div class="nav-label">Next Stage</div>
+            <div class="nav-title">Stage II: The Bridge</div>
+        </div>
+        <span class="arrow">→</span>
+    </a>
+</div>
     </div>
 
     <footer class="footer">
@@ -634,6 +666,78 @@
                 });
             });
         }
+        // Reset map button
+document.getElementById('resetMapBtn').addEventListener('click', () => {
+    // Close all milestones
+    milestoneElements.forEach(m => m.classList.remove('open', 'active'));
+    
+    // Reset all markers
+    resetMarkers();
+    
+    // Reset map view to show full route
+    map.setView([40.0, -120.0], 5, {
+        animate: true
+    });
+});
+.stage-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 60px auto 0;
+    padding: 40px 20px;
+    border-top: 2px solid #333333;
+}
+
+.stage-nav-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #1a1a1a;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 20px 30px;
+    border-radius: 8px;
+    border: 2px solid #333333;
+    transition: all 0.3s ease;
+    font-size: 16px;
+}
+
+.stage-nav-btn:hover {
+    border-color: #ff6600;
+    background: #222222;
+    transform: translateY(-2px);
+}
+
+.stage-nav-btn .nav-label {
+    font-size: 12px;
+    color: #999999;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.stage-nav-btn .nav-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    color: #ff6600;
+}
+
+.stage-nav-btn .arrow {
+    font-size: 24px;
+    color: #ff6600;
+}
+
+@media (max-width: 768px) {
+    .stage-navigation {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .stage-nav-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
     </script>
 </body>
 </html>
