@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stage II: The Bridge | Under Human Power</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        .stage-hero {
+            width: 100%;
+            height: 400px;
+            background-size: cover;
+            background-position: center;
+            background-image: url('MtnTreeClouds.jpg');
+            display: flex;
+            align-items: flex-end;
+            padding: 40px;
+            position: relative;
+        }
+
+        .stage-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0) 100%);
+        }
+
+        .stage-hero-title {
+            position: relative;
+            z-index: 1;
+            color: white;
+        }
+
+        .stage-hero-title h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 56px;
+            margin: 0 0 10px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .stage-hero-subtitle {
+            font-size: 18px;
+            color: #ffaa66;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .stage-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .stage-overview {
+            background: #1a1a1a;
+            padding: 40px;
+            border-radius: 8px;
+            border-left: 6px solid #ff6600;
+            margin-bottom: 60px;
+        }
+
+        .stage-overview h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 32px;
+            color: #ff6600;
+            margin: 0 0 20px 0;
+        }
+
+        .stage-overview-text {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #cccccc;
+            margin-bottom: 30px;
+        }
+
+        .stage-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 30px;
+            padding-top: 30px;
+            border-top: 2px solid #333333;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 42px;
+            color: #ff6600;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: #999999;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .timeline-map-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .timeline-section h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 28px;
+            color: #ff6600;
+            margin-bottom: 30px;
+        }
+
+        .milestone {
+            background: #1a1a1a;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            border: 2px solid #333333;
+            transition: border-color 0.3s ease;
+        }
+
+        .milestone.active {
+            border-color: #ff6600;
+        }
+
+        .milestone-header {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s ease;
+        }
+
+        .milestone-header:hover {
+            background: #222222;
+        }
+
+        .milestone-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 20px;
+            color: #ffffff;
+        }
+
+        .milestone-meta {
+            font-size: 14px;
+            color: #999999;
+            margin-top: 5px;
+        }
+
+        .milestone-toggle {
+            font-size: 24px;
+            color: #ff6600;
+            transition: transform 0.3s ease;
+        }
+
+        .milestone.open .milestone-toggle {
+            transform: rotate(180deg);
+        }
+
+        .milestone-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .milestone.open .milestone-content {
+            max-height: 1000px;
+        }
+
+        .milestone-body {
+            padding: 0 20px 20px 20px;
+            color: #cccccc;
+            line-height: 1.7;
+        }
+
+        .milestone-photos {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .milestone-photo {
+            aspect-ratio: 4/3;
+            background: #333333;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: #666666;
+        }
+
+        #map {
+            height: 600px;
+            border-radius: 8px;
+            border: 3px solid #333333;
+            position: sticky;
+            top: 20px;
+        }
+
+        .media-gallery {
+            margin-top: 60px;
+        }
+
+        .media-gallery h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 32px;
+            color: #ff6600;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .photo-item {
+            aspect-ratio: 4/3;
+            background: #333333;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 3px solid #333333;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .photo-item:hover {
+            border-color: #ff6600;
+            transform: translateY(-5px);
+        }
+
+        .photo-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        @media (max-width: 968px) {
+            .stage-hero {
+                height: 300px;
+                padding: 30px 20px;
+            }
+
+            .stage-hero-title h1 {
+                font-size: 40px;
+            }
+
+            .timeline-map-container {
+                grid-template-columns: 1fr;
+            }
+
+            #map {
+                height: 400px;
+                position: static;
+                order: -1;
+            }
+
+            .stage-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">UNDER HUMAN POWER</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="journey.html">Journey</a></li>
+                <li class="dropdown">
+                    <a href="trail-journal.html">Trail Journal</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="photo-gallery.html">Photo Gallery</a></li>
+                        <li><a href="maps-gps.html">Maps & GPS Data</a></li>
+                        <li><a href="journal-entries.html">Journal Entries</a></li>
+                        <li><a href="guestbook.html">Guestbook</a></li>
+                    </ul>
+                </li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="sponsors.html">Sponsors</a></li>
+                <li><a href="stage-layout-mockups.html" style="color: #999999;">Stage Mockups (Temp)</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="stage-hero">
+        <div class="stage-hero-title">
+            <h1>Stage II: "The Bridge"</h1>
+            <div class="stage-hero-subtitle">Washington • 2006</div>
+        </div>
+    </div>
+
+    <div class="stage-content">
+        <div class="stage-overview">
+            <h2>Overview</h2>
+            <div class="stage-overview-text">
+                A 250-mile connecting segment through Washington state, linking the completion of the Pacific Crest Trail to the start of the Inside Passage kayaking route. This transitional stage traversed diverse terrain from the Cascade mountains to the Puget Sound coast.
+            </div>
+            <div class="stage-stats">
+                <div class="stat-item">
+                    <div class="stat-number">250</div>
+                    <div class="stat-label">Total Miles</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">35,000</div>
+                    <div class="stat-label">Elevation Gain (ft)</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">18</div>
+                    <div class="stat-label">Days</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="timeline-map-container">
+            <div class="timeline-section">
+                <h3>Chapters</h3>
+
+                <div class="milestone" data-milestone="0">
+                    <div class="milestone-header">
+                        <div>
+                            <div class="milestone-title">Start - Manning Park</div>
+                            <div class="milestone-meta">BC/WA Border • 2006</div>
+                        </div>
+                        <div class="milestone-toggle">▼</div>
+                    </div>
+                    <div class="milestone-content">
+                        <div class="milestone-body">
+                            <p>Beginning where the PCT ended at the Canadian border, this stage retraces south through the North Cascades before turning west toward the coast.</p>
+                            <div class="milestone-photos">
+                                <div class="milestone-photo">Photo placeholder</div>
+                                <div class="milestone-photo">Photo placeholder</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="milestone" data-milestone="1">
+                    <div class="milestone-header">
+                        <div>
+                            <div class="milestone-title">North Cascades</div>
+                            <div class="milestone-meta">Washington • 2006</div>
+                        </div>
+                        <div class="milestone-toggle">▼</div>
+                    </div>
+                    <div class="milestone-content">
+                        <div class="milestone-body">
+                            <p>Through rugged mountain terrain, following valleys and passes that would eventually lead toward the Puget Sound lowlands.</p>
+                            <div class="milestone-photos">
+                                <div class="milestone-photo">Photo placeholder</div>
+                                <div class="milestone-photo">Photo placeholder</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="milestone" data-milestone="2">
+                    <div class="milestone-header">
+                        <div>
+                            <div class="milestone-title">Coastal Transition</div>
+                            <div class="milestone-meta">Western WA • 2006</div>
+                        </div>
+                        <div class="milestone-toggle">▼</div>
+                    </div>
+                    <div class="milestone-content">
+                        <div class="milestone-body">
+                            <p>Descending from mountain elevations into the coastal lowlands, the terrain shifts from alpine forest to the maritime environment of the Puget Sound region.</p>
+                            <div class="milestone-photos">
+                                <div class="milestone-photo">Photo placeholder</div>
+                                <div class="milestone-photo">Photo placeholder</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="milestone" data-milestone="3">
+                    <div class="milestone-header">
+                        <div>
+                            <div class="milestone-title">End - Puget Sound</div>
+                            <div class="milestone-meta">Western WA • 2006</div>
+                        </div>
+                        <div class="milestone-toggle">▼</div>
+                    </div>
+                    <div class="milestone-content">
+                        <div class="milestone-body">
+                            <p>Reaching the saltwater of Puget Sound, where the kayak portion of the expedition would begin. The transition from land to water marks a fundamental shift in the journey.</p>
+                            <div class="milestone-photos">
+                                <div class="milestone-photo">Photo placeholder</div>
+                                <div class="milestone-photo">Photo placeholder</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="map-section">
+                <div id="map"></div>
+            </div>
+        </div>
+
+        <div class="media-gallery">
+            <h3>Photos & Videos</h3>
+            <div class="photo-grid">
+                <div class="photo-item">
+                    <img src="ValleyInTheMist.jpg" alt="Valley in mist">
+                </div>
+                <div class="photo-item">
+                    <img src="MtnTreeClouds.jpg" alt="Mountain trees">
+                </div>
+                <div class="photo-item">
+                    <img src="CloudyLake.jpg" alt="Cloudy lake">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Under Human Power. All rights reserved.</p>
+            <p>A journey by Darrell J. Gardner</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+
+        const map = L.map('map').setView([48.5, -121.0], 8);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors',
+            maxZoom: 19
+        }).addTo(map);
+
+        const milestones = [
+            { lat: 49.0, lng: -120.8, name: "Manning Park" },
+            { lat: 48.7, lng: -121.2, name: "North Cascades" },
+            { lat: 48.2, lng: -121.8, name: "Coastal Transition" },
+            { lat: 48.0, lng: -122.3, name: "Puget Sound" }
+        ];
+
+        const markers = [];
+        const milestoneElements = document.querySelectorAll('.milestone');
+
+        milestones.forEach((milestone, index) => {
+            const marker = L.circleMarker([milestone.lat, milestone.lng], {
+                radius: 10,
+                fillColor: '#ff6600',
+                color: 'white',
+                weight: 3,
+                opacity: 1,
+                fillOpacity: 0.9
+            }).addTo(map);
+
+            marker.bindPopup(`<strong>${milestone.name}</strong>`);
+            
+            marker.on('click', () => {
+                expandMilestone(index);
+                highlightMarker(index);
+            });
+
+            markers.push(marker);
+        });
+
+        const routeCoords = milestones.map(m => [m.lat, m.lng]);
+        L.polyline(routeCoords, {
+            color: '#ff6600',
+            weight: 3,
+            opacity: 0.6
+        }).addTo(map);
+
+        milestoneElements.forEach((milestone, index) => {
+            const header = milestone.querySelector('.milestone-header');
+            
+            header.addEventListener('click', () => {
+                const isOpen = milestone.classList.contains('open');
+                
+                milestoneElements.forEach(m => m.classList.remove('open', 'active'));
+                
+                if (!isOpen) {
+                    milestone.classList.add('open', 'active');
+                    highlightMarker(index);
+                    map.setView([milestones[index].lat, milestones[index].lng], 9, {
+                        animate: true
+                    });
+                } else {
+                    resetMarkers();
+                }
+            });
+        });
+
+        function expandMilestone(index) {
+            milestoneElements.forEach(m => m.classList.remove('open', 'active'));
+            milestoneElements[index].classList.add('open', 'active');
+            
+            milestoneElements[index].scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'nearest' 
+            });
+        }
+
+        function highlightMarker(index) {
+            resetMarkers();
+            markers[index].setStyle({
+                radius: 14,
+                fillColor: '#ffaa66',
+                weight: 4
+            });
+        }
+
+        function resetMarkers() {
+            markers.forEach(marker => {
+                marker.setStyle({
+                    radius: 10,
+                    fillColor: '#ff6600',
+                    weight: 3
+                });
+            });
+        }
+    </script>
+</body>
+</html>
