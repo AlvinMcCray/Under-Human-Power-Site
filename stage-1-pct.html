@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stage I: Pacific Crest Trail | Under Human Power</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        .stage-hero {
+            width: 100%;
+            height: 400px;
+            background-size: cover;
+            background-position: center;
+            background-image: url('PeakAndValley.jpg');
+            display: flex;
+            align-items: flex-end;
+            padding: 40px;
+            position: relative;
+        }
+
+        .stage-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0) 100%);
+        }
+
+        .stage-hero-title {
+            position: relative;
+            z-index: 1;
+            color: white;
+        }
+
+        .stage-hero-title h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 56px;
+            margin: 0 0 10px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .stage-hero-subtitle {
+            font-size: 18px;
+            color: #ffaa66;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .stage-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .stage-overview {
+            background: #1a1a1a;
+            padding: 40px;
+            border-radius: 8px;
+            border-left: 6px solid #ff6600;
+            margin-bottom: 60px;
+        }
+
+        .stage-overview h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 32px;
+            color: #ff6600;
+            margin: 0 0 20px 0;
+        }
+
+        .stage-overview-text {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #cccccc;
+            margin-bottom: 30px;
+        }
+
+        .stage-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 30px;
+            padding-top: 30px;
+            border-top: 2px solid #333333;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 42px;
+            color: #ff6600;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: #999999;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .timeline-map-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .timeline-section h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 28px;
+            color: #ff6600;
+            margin-bottom: 30px;
+        }
+
+        .milestone {
+            background: #1a1a1a;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            border: 2px solid #333333;
+            transition: border-color 0.3s ease;
+        }
+
+        .milestone.active {
+            border-color: #ff6600;
+        }
+
+        .milestone-header {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s ease;
+        }
+
+        .milestone-header:hover {
+            background: #222222;
+        }
+
+        .milestone-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 20px;
+            color: #ffffff;
+        }
+
+        .milestone-meta {
+            font-size: 14px;
+            color: #999999;
+            margin-top: 5px;
+        }
+
+        .milestone-toggle {
+            font-size: 24px;
+            color: #ff6600;
+            transition: transform 0.3s ease;
+        }
+
+        .milestone.open .milestone-toggle {
+            transform: rotate(180deg);
+        }
+
+        .milestone-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .milestone.open .milestone-content {
+            max-height: 1000px;
+        }
+
+        .milestone-body {
+            padding: 0 20px 20px 20px;
+            color: #cccccc;
+            line-height: 1.7;
+        }
+
+        .milestone-photos {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .milestone-photo {
+            aspect-ratio: 4/3;
+            background: #333333;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: #666666;
+        }
+
+        #map {
+            height: 600px;
+            border-radius: 8px;
+            border: 3px solid #333333;
+            position: sticky;
+            top: 20px;
+        }
+
+        .media-gallery {
+            margin-top: 60px;
+        }
+
+        .media-gallery h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 32px;
+            color: #ff6600;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .photo-item {
+            aspect-ratio: 4/3;
+            background: #333333;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 3px solid #333333;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .photo-item:hover {
+            border-color: #ff6600;
+            transform: translateY(-5px);
+        }
+
+        .photo-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 968px) {
+            .stage-hero {
+                height: 300px;
+                padding: 30px 20px;
+            }
+
+            .stage-hero-title h1 {
+                font-size: 40px;
+            }
+
+            .timeline-map-container {
+                grid-template-columns: 1fr;
+            }
+
+            #map {
+                height: 400px;
+                position: static;
+                order: -1;
+            }
+
+            .stage-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Custom Leaflet marker */
+        .custom-marker {
+            background: #ff6600;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+        }
+
+        .custom-marker.active {
+            background: #ffaa66;
+            width: 36px;
+            height: 36px;
+            border-width: 4px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">UNDER HUMAN POWER</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="journey.html">Journey</a></li>
+                <li class="dropdown">
+                    <a href="trail-journal.html">Trail Journal</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="photo-gallery.html">Photo Gallery</a></li>
+                        <li><a href="maps-gps.html">Maps & GPS Data</a></li>
+                        <li><a href="journal-entries.html">Journal Entries</a></li>
+                        <li><a href="guestbook.html">Guestbook</a></li>
+                    </ul>
+                </li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="sponsors.html">Sponsors</a></li>
+                <li><a href="stage-layout-mockups.html" style="color: #999999;">Stage Mockups (Temp)</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="stage-hero">
+        <div class="stage-hero-title">
+            <h1>Stage I: Pacific Crest Trail</h1>
+            <div class="stage-hero-subtitle">Mexico to Canada • 2004-2005</div>
+        </div>
+    </div>
+
+    <div class="stage-content">
+        <div class="stage-overview">
+            <h2>Overview</h2>
+            <div class="stage-overview-text">
+                2,650 miles through California, Oregon, and Washington. Beginning at the Mexican border in April 2004, the journey followed the spine of the Sierra Nevada and Cascade ranges, crossing deserts, alpine passes, and volcanic peaks before reaching the Canadian border in September 2005.
+            </div>
+            <div class="stage-stats">
+                <div class="stat-item">
+                    <div class="stat-number">2,650</div>
+                    <div class="stat-label">Total Miles</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">489,000</div>
+                    <div class="stat-label">Elevation Gain (ft)</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">147</div>
+                    <div class="stat-label">Days</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">13,153</div>
+                    <div class="stat-label">Highest Point (ft)</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="timeline-map-container">
+            <div class="timeline-section">
+                <h3>Chapters</h3>
+
+                <div class="milestone" data-milestone="0">
+                    <div class="milestone-header">
+                        <div>
+                            <div class="milestone-title">Mile 0 - Mexican Border</div>
+                            <div class="milestone-meta">Campo, CA • April 2004</div>
+                        </div>
+                        <div class="milestone-toggle">▼</div>
+                    </div>
+                    <div class="milestone-content">
+                        <div class="milestone-body">
+                            <p>The journey begins at the southern terminus monument on the Mexican border. Standing at the weathered metal barrier, looking north toward 2,650 miles of trail, the magnitude of the undertaking becomes real.</p>
+                            <div class="milestone-photos">
+                                <div class="milestone-photo">Photo placeholder</div>
+                                <div class="milestone-photo">Photo placeholder</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="milestone" data-milestone="1">
+                    <div class="milestone-header">
+                        <div>
+                            <div class="milestone-title">Mile 702 - Kennedy Meadows</div>
+                            <div class="milestone-meta">California • May 2004</div>
+                        </div>
+                        <div class="milestone-toggle">▼</div>
+                    </div>
+                    <div class="milestone-content">
+                        <div class="milestone-body">
+                            <p>The transition point from desert to Sierra Nevada. The final resupply before entering the high country. Here, the terrain transforms from arid scrubland to alpine wilderness.</p>
+                            <div class="milestone-photos">
+                                <div class="milestone-photo">Photo placeholder</div>
+                                <div class="milestone-photo">Photo placeholder</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="milestone" data-milestone="2">
+                    <div class="milestone-header">
+                        <div>
+                            <div class="milestone-title">Mile 1,094 - Forester Pass</div>
+                            <div class="milestone-meta">13,153 ft • June 2004</div>
+                        </div>
+                        <div class="milestone-toggle">▼</div>
+                    </div>
+                    <div class="milestone-content">
+                        <div class="milestone-body">
+                            <p>The highest point on the Pacific Crest Trail. Snow-covered slopes, thin air, and spectacular views across the High Sierra. The pinnacle moment of the entire route.</p>
+                            <div class="milestone-photos">
+                                <div class="milestone-photo">Photo placeholder</div>
+                                <div class="milestone-photo">Photo placeholder</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="milestone" data-milestone="3">
+                    <div class="milestone-header">
+                        <div>
+                            <div class="milestone-title">Mile 1,697 - Crater Lake</div>
+                            <div class="milestone-meta">Oregon • August 2004</div>
+                        </div>
+                        <div class="milestone-toggle">▼</div>
+                    </div>
+                    <div class="milestone-content">
+                        <div class="milestone-body">
+                            <p>Oregon's crown jewel. The deepest lake in the United States, formed in the caldera of an ancient volcano. A surreal blue against volcanic rock and dense forest.</p>
+                            <div class="milestone-photos">
+                                <div class="milestone-photo">Photo placeholder</div>
+                                <div class="milestone-photo">Photo placeholder</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="milestone" data-milestone="4">
+                    <div class="milestone-header">
+                        <div>
+                            <div class="milestone-title">Mile 2,302 - Bridge of the Gods</div>
+                            <div class="milestone-meta">WA/OR Border • August 2004</div>
+                        </div>
+                        <div class="milestone-toggle">▼</div>
+                    </div>
+                    <div class="milestone-content">
+                        <div class="milestone-body">
+                            <p>Crossing the Columbia River into Washington. The bridge spans between Oregon's green valleys and Washington's volcanic landscape. The final state begins.</p>
+                            <div class="milestone-photos">
+                                <div class="milestone-photo">Photo placeholder</div>
+                                <div class="milestone-photo">Photo placeholder</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="milestone" data-milestone="5">
+                    <div class="milestone-header">
+                        <div>
+                            <div class="milestone-title">Mile 2,650 - Canadian Border</div>
+                            <div class="milestone-meta">Manning Park, BC • September 2005</div>
+                        </div>
+                        <div class="milestone-toggle">▼</div>
+                    </div>
+                    <div class="milestone-content">
+                        <div class="milestone-body">
+                            <p>The northern terminus. After 2,650 miles and over a year of walking, the journey reaches its end at the Canadian border. A weathered monument marks the completion of an extraordinary undertaking.</p>
+                            <div class="milestone-photos">
+                                <div class="milestone-photo">Photo placeholder</div>
+                                <div class="milestone-photo">Photo placeholder</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="map-section">
+                <div id="map"></div>
+            </div>
+        </div>
+
+        <div class="media-gallery">
+            <h3>Photos & Videos</h3>
+            <div class="photo-grid">
+                <div class="photo-item">
+                    <img src="MtnTopLake.jpg" alt="Mountain lake">
+                </div>
+                <div class="photo-item">
+                    <img src="PeakAndValley.jpg" alt="Peak and valley">
+                </div>
+                <div class="photo-item">
+                    <img src="ScaryRidge.jpg" alt="Steep ridge">
+                </div>
+                <div class="photo-item">
+                    <img src="DarrellOnMtnTrail.jpg" alt="Darrell on mountain trail">
+                </div>
+                <div class="photo-item">
+                    <img src="WaterfallOverRocks.jpg" alt="Waterfall">
+                </div>
+                <div class="photo-item">
+                    <img src="MtnTreeClouds.jpg" alt="Mountain trees and clouds">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Under Human Power. All rights reserved.</p>
+            <p>A journey by Darrell J. Gardner</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        // Mobile menu
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Initialize map (roughly centered on PCT)
+        const map = L.map('map').setView([40.0, -120.0], 5);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors',
+            maxZoom: 19
+        }).addTo(map);
+
+        // Milestone coordinates (approximate PCT locations)
+        const milestones = [
+            { lat: 32.6, lng: -116.5, name: "Mexican Border" },
+            { lat: 36.0, lng: -118.2, name: "Kennedy Meadows" },
+            { lat: 36.7, lng: -118.3, name: "Forester Pass" },
+            { lat: 42.9, lng: -122.1, name: "Crater Lake" },
+            { lat: 45.7, lng: -121.9, name: "Bridge of the Gods" },
+            { lat: 49.0, lng: -120.8, name: "Canadian Border" }
+        ];
+
+        const markers = [];
+        const milestoneElements = document.querySelectorAll('.milestone');
+
+        // Add markers to map
+        milestones.forEach((milestone, index) => {
+            const marker = L.circleMarker([milestone.lat, milestone.lng], {
+                radius: 10,
+                fillColor: '#ff6600',
+                color: 'white',
+                weight: 3,
+                opacity: 1,
+                fillOpacity: 0.9
+            }).addTo(map);
+
+            marker.bindPopup(`<strong>${milestone.name}</strong>`);
+            
+            // Click marker to expand timeline
+            marker.on('click', () => {
+                expandMilestone(index);
+                highlightMarker(index);
+            });
+
+            markers.push(marker);
+        });
+
+        // Draw route line
+        const routeCoords = milestones.map(m => [m.lat, m.lng]);
+        L.polyline(routeCoords, {
+            color: '#ff6600',
+            weight: 3,
+            opacity: 0.6
+        }).addTo(map);
+
+        // Timeline accordion functionality
+        milestoneElements.forEach((milestone, index) => {
+            const header = milestone.querySelector('.milestone-header');
+            
+            header.addEventListener('click', () => {
+                const isOpen = milestone.classList.contains('open');
+                
+                // Close all milestones
+                milestoneElements.forEach(m => m.classList.remove('open', 'active'));
+                
+                // Open clicked milestone
+                if (!isOpen) {
+                    milestone.classList.add('open', 'active');
+                    highlightMarker(index);
+                    // Pan map to marker
+                    map.setView([milestones[index].lat, milestones[index].lng], 7, {
+                        animate: true
+                    });
+                } else {
+                    resetMarkers();
+                }
+            });
+        });
+
+        function expandMilestone(index) {
+            milestoneElements.forEach(m => m.classList.remove('open', 'active'));
+            milestoneElements[index].classList.add('open', 'active');
+            
+            // Scroll to milestone
+            milestoneElements[index].scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'nearest' 
+            });
+        }
+
+        function highlightMarker(index) {
+            resetMarkers();
+            markers[index].setStyle({
+                radius: 14,
+                fillColor: '#ffaa66',
+                weight: 4
+            });
+        }
+
+        function resetMarkers() {
+            markers.forEach(marker => {
+                marker.setStyle({
+                    radius: 10,
+                    fillColor: '#ff6600',
+                    weight: 3
+                });
+            });
+        }
+    </script>
+</body>
+</html>
