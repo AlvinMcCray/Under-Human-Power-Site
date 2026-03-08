@@ -664,6 +664,9 @@
                     });
                 } else {
                     resetMarkers();
+                    map.setView([40.0, -120.0], 5, {
+                        animate: true
+                    });
                 }
             });
         });
