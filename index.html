@@ -8,73 +8,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <style>
-        .carousel-slide {
-            position: relative;
-        }
-        
-        .carousel-slide a {
-            display: block;
-            width: 100%;
-            height: 100%;
-            text-decoration: none;
-            color: inherit;
-        }
-        
-        .carousel-placeholder {
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .carousel-placeholder::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: repeating-linear-gradient(
-                45deg,
-                rgba(255, 102, 0, 0.05),
-                rgba(255, 102, 0, 0.05) 10px,
-                transparent 10px,
-                transparent 20px
-            );
-        }
-        
-        .carousel-placeholder-title {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 48px;
-            color: #ff6600;
-            text-align: center;
-            z-index: 1;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
-        
-        .carousel-placeholder-subtitle {
-            font-size: 18px;
-            color: #cccccc;
-            text-align: center;
-            margin-top: 10px;
-            z-index: 1;
-        }
-        
-        .carousel-placeholder-note {
-            position: absolute;
-            bottom: 20px;
-            font-size: 12px;
-            color: #666666;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-    </style>
 </head>
 <body>
     <nav class="navbar">
@@ -128,69 +61,39 @@
         <div class="hero-right">
             <div class="carousel">
                 <div class="carousel-track">
-                    <!-- Stage I: Pacific Crest Trail -->
                     <div class="carousel-slide active">
                         <a href="stage-1-pct.html">
-                            <div class="carousel-placeholder">
-                                <div class="carousel-placeholder-title">STAGE I</div>
-                                <div class="carousel-placeholder-subtitle">Pacific Crest Trail</div>
-                                <div class="carousel-placeholder-note">Photo Placeholder</div>
-                            </div>
+                            <img src="hero-stage-1-pct.jpg" alt="Stage I: Pacific Crest Trail">
                         </a>
                     </div>
                     
-                    <!-- Stage II: The Bridge -->
                     <div class="carousel-slide">
                         <a href="stage-2-bridge.html">
-                            <div class="carousel-placeholder">
-                                <div class="carousel-placeholder-title">STAGE II</div>
-                                <div class="carousel-placeholder-subtitle">The Bridge</div>
-                                <div class="carousel-placeholder-note">Photo Placeholder</div>
-                            </div>
+                            <img src="hero-stage-2-bridge.jpg" alt="Stage II: The Bridge">
                         </a>
                     </div>
                     
-                    <!-- Stage III: Inside Passage -->
                     <div class="carousel-slide">
                         <a href="stage-3-inside-passage.html">
-                            <div class="carousel-placeholder">
-                                <div class="carousel-placeholder-title">STAGE III</div>
-                                <div class="carousel-placeholder-subtitle">Inside Passage</div>
-                                <div class="carousel-placeholder-note">Photo Placeholder</div>
-                            </div>
+                            <img src="hero-stage-3-inside-passage.jpg" alt="Stage III: Inside Passage">
                         </a>
                     </div>
                     
-                    <!-- Stage IV: Yukon River -->
                     <div class="carousel-slide">
                         <a href="stage-4-yukon.html">
-                            <div class="carousel-placeholder">
-                                <div class="carousel-placeholder-title">STAGE IV</div>
-                                <div class="carousel-placeholder-subtitle">Yukon River</div>
-                                <div class="carousel-placeholder-note">Photo Placeholder</div>
-                            </div>
+                            <img src="hero-stage-4-yukon.jpg" alt="Stage IV: Yukon River">
                         </a>
                     </div>
                     
-                    <!-- Stage V: Brooks Range -->
                     <div class="carousel-slide">
                         <a href="stage-5-brooks-range.html">
-                            <div class="carousel-placeholder">
-                                <div class="carousel-placeholder-title">STAGE V</div>
-                                <div class="carousel-placeholder-subtitle">Brooks Range</div>
-                                <div class="carousel-placeholder-note">Photo Placeholder</div>
-                            </div>
+                            <img src="hero-stage-5-brooks-range.jpg" alt="Stage V: Brooks Range">
                         </a>
                     </div>
                     
-                    <!-- Stage VI: Arctic Ocean -->
                     <div class="carousel-slide">
                         <a href="stage-6-arctic-ocean.html">
-                            <div class="carousel-placeholder">
-                                <div class="carousel-placeholder-title">STAGE VI</div>
-                                <div class="carousel-placeholder-subtitle">Arctic Ocean</div>
-                                <div class="carousel-placeholder-note">Photo Placeholder</div>
-                            </div>
+                            <img src="hero-stage-6-arctic-ocean.jpg" alt="Stage VI: Arctic Ocean">
                         </a>
                     </div>
                 </div>
@@ -265,7 +168,6 @@
     </footer>
 
     <script>
-        // Mobile menu toggle
         const mobileMenu = document.querySelector('.mobile-menu');
         const navLinks = document.querySelector('.nav-links');
 
@@ -274,7 +176,6 @@
             mobileMenu.classList.toggle('active');
         });
 
-        // Carousel functionality
         const slides = document.querySelectorAll('.carousel-slide');
         const prevBtn = document.querySelector('.carousel-prev');
         const nextBtn = document.querySelector('.carousel-next');
@@ -303,14 +204,13 @@
         }
 
         function startAutoPlay() {
-            autoPlayInterval = setInterval(nextSlide, 6000); // 6 seconds
+            autoPlayInterval = setInterval(nextSlide, 6000);
         }
 
         function stopAutoPlay() {
             clearInterval(autoPlayInterval);
         }
 
-        // Arrow click handlers
         nextBtn.addEventListener('click', () => {
             stopAutoPlay();
             nextSlide();
@@ -323,7 +223,6 @@
             startAutoPlay();
         });
 
-        // Start auto-play on page load
         startAutoPlay();
     </script>
 </body>
