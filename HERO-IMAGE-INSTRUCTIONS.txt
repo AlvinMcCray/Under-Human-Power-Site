@@ -1,0 +1,62 @@
+HERO IMAGE PLACEHOLDER SETUP
+=============================
+
+The carousel on index.html now has 6 slides - one for each stage.
+Each slide is clickable and links to its stage page.
+
+CURRENT STATE:
+- All 6 carousel slides show placeholder graphics
+- All 6 stage hero images still use their current photos
+
+WHEN YOU HAVE PHOTOS READY:
+============================
+
+Step 1: Name your 6 hero photos:
+- hero-stage-1-pct.jpg (for Stage I: Pacific Crest Trail)
+- hero-stage-2-bridge.jpg (for Stage II: The Bridge)
+- hero-stage-3-inside-passage.jpg (for Stage III: Inside Passage)
+- hero-stage-4-yukon.jpg (for Stage IV: Yukon River)
+- hero-stage-5-brooks-range.jpg (for Stage V: Brooks Range)
+- hero-stage-6-arctic-ocean.jpg (for Stage VI: Arctic Ocean)
+
+Step 2: Upload all 6 photos to your project root folder
+
+Step 3: Update index.html carousel:
+Find each carousel slide placeholder and replace with real image.
+
+Example - find this:
+    <div class="carousel-slide active">
+        <a href="stage-1-pct.html">
+            <div class="carousel-placeholder">
+                <div class="carousel-placeholder-title">STAGE I</div>
+                <div class="carousel-placeholder-subtitle">Pacific Crest Trail</div>
+                <div class="carousel-placeholder-note">Photo Placeholder</div>
+            </div>
+        </a>
+    </div>
+
+Replace with:
+    <div class="carousel-slide active">
+        <a href="stage-1-pct.html">
+            <img src="hero-stage-1-pct.jpg" alt="Stage I: Pacific Crest Trail">
+        </a>
+    </div>
+
+Do this for all 6 carousel slides.
+
+Step 4: Update each stage page hero image:
+In each stage HTML file, find the line:
+    background-image: url('CurrentImageName.jpg');
+
+Replace with the matching hero image:
+Stage I:   background-image: url('hero-stage-1-pct.jpg');
+Stage II:  background-image: url('hero-stage-2-bridge.jpg');
+Stage III: background-image: url('hero-stage-3-inside-passage.jpg');
+Stage IV:  background-image: url('hero-stage-4-yukon.jpg');
+Stage V:   background-image: url('hero-stage-5-brooks-range.jpg');
+Stage VI:  background-image: url('hero-stage-6-arctic-ocean.jpg');
+
+RESULT:
+- Carousel on home page will show real photos
+- Clicking carousel photo takes you to that stage page
+- Stage hero image matches the carousel image
