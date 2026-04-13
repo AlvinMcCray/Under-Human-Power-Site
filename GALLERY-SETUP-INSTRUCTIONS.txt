@@ -1,0 +1,106 @@
+GALLERY PAGE SETUP INSTRUCTIONS
+================================
+
+## What's Been Created:
+
+1. **gallery.html** - New gallery page with:
+   - Main carousel showing ALL photos from all stages
+   - Click any photo to zoom (lightbox with arrow navigation)
+   - Stage preview sections (5 photos each with "View Full Gallery" button)
+   - Auto-plays through carousel every 5 seconds
+
+## How to Add New Photos:
+
+**IMPORTANT:** To add images, edit the JavaScript in gallery.html around line 334:
+
+```javascript
+const galleryImages = {
+    stage1: [
+        'DarrellStandingOnPeak.jpg',
+        'DarrellAndPeak.jpg',
+        'MtnTopLake.jpg',
+        // ADD MORE STAGE 1 IMAGES HERE
+    ],
+    stage2: [
+        'MtnTreeClouds.jpg',
+        // ADD MORE STAGE 2 IMAGES HERE
+    ],
+    // etc...
+};
+```
+
+**Steps to add new photos:**
+
+1. Upload your image file to the project root folder
+2. Open gallery.html in a text editor
+3. Find the `const galleryImages = {` section (around line 334)
+4. Add your new filename to the appropriate stage array
+5. Save and push to GitHub
+
+**Example - Adding 3 new Stage I photos:**
+
+```javascript
+stage1: [
+    'DarrellStandingOnPeak.jpg',
+    'DarrellAndPeak.jpg',
+    'MtnTopLake.jpg',
+    'AboveTheClouds.jpg',
+    'WaterfallOverRocks.jpg',
+    'SnowyPeak.jpg',
+    'NewPhoto1.jpg',        // ← NEW
+    'NewPhoto2.jpg',        // ← NEW
+    'NewPhoto3.jpg'         // ← NEW
+],
+```
+
+## Update Navigation Links:
+
+You need to update all your pages to link to "Gallery" instead of "Photo Gallery":
+
+In ALL HTML files, find:
+```html
+<li><a href="photo-gallery.html">Photo Gallery</a></li>
+```
+
+Replace with:
+```html
+<li><a href="gallery.html">Gallery</a></li>
+```
+
+Files to update:
+- index.html
+- journey.html
+- stage-1-pct.html
+- stage-2-bridge.html
+- stage-3-inside-passage.html
+- stage-4-yukon.html
+- stage-5-brooks-range.html
+- stage-6-arctic-ocean.html
+- about.html
+- sponsors.html
+- maps-gps.html
+- journal-entries.html
+- guestbook.html
+- trail-journal.html
+
+## Features:
+
+✅ Click any photo to zoom (lightbox)
+✅ Arrow keys to navigate in lightbox
+✅ ESC to close lightbox
+✅ Click outside image to close
+✅ Auto-rotating main carousel
+✅ Mobile-responsive
+✅ Shows first 5 photos from each stage as previews
+✅ "View Full Gallery" buttons link to stage pages (you'll add galleries there later)
+
+## Current Images Loaded:
+
+Stage I: 6 photos (DarrellStandingOnPeak, DarrellAndPeak, MtnTopLake, AboveTheClouds, WaterfallOverRocks, SnowyPeak)
+Stage II: 1 photo (MtnTreeClouds)
+Stage III: 1 photo (Darrell-Kayaking)
+Stage IV: 1 photo (MtnsRiverMist)
+Stage V: 1 photo (AboveTheClouds)
+Stage VI: 1 photo (Jubilant)
+
+Total: 11 photos in main carousel
