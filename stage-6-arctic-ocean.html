@@ -550,13 +550,16 @@
         const milestoneElements = document.querySelectorAll('.milestone');
 
         milestones.forEach((milestone, index) => {
-            const marker = L.circleMarker([milestone.lat, milestone.lng], {
-                radius: 10,
-                fillColor: '#ff6600',
-                color: 'white',
-                weight: 3,
-                opacity: 1,
-                fillOpacity: 0.9
+            // Create custom tent icon
+            const tentIcon = L.divIcon({
+                html: '<div style="font-size: 24px;">⛺</div>',
+                className: 'tent-marker',
+                iconSize: [30, 30],
+                iconAnchor: [15, 15]
+            });
+
+            const marker = L.marker([milestone.lat, milestone.lng], {
+                icon: tentIcon
             }).addTo(map);
 
             marker.bindPopup(`<strong>${milestone.name}</strong>`);
@@ -611,20 +614,25 @@
 
         function highlightMarker(index) {
             resetMarkers();
-            markers[index].setStyle({
-                radius: 14,
-                fillColor: '#ffaa66',
-                weight: 4
+            // Make highlighted tent bigger and orange
+            const highlightIcon = L.divIcon({
+                html: '<div style="font-size: 32px; filter: drop-shadow(0 0 8px #ff6600);">⛺</div>',
+                className: 'tent-marker-active',
+                iconSize: [40, 40],
+                iconAnchor: [20, 20]
             });
+            markers[index].setIcon(highlightIcon);
         }
 
         function resetMarkers() {
+            const normalIcon = L.divIcon({
+                html: '<div style="font-size: 24px;">⛺</div>',
+                className: 'tent-marker',
+                iconSize: [30, 30],
+                iconAnchor: [15, 15]
+            });
             markers.forEach(marker => {
-                marker.setStyle({
-                    radius: 10,
-                    fillColor: '#ff6600',
-                    weight: 3
-                });
+                marker.setIcon(normalIcon);
             });
         }
 
