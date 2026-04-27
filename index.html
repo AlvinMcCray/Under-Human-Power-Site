@@ -9,6 +9,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <style>
+        .stage-link-card:hover {
+            background: #1a1a1a !important;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 102, 0, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .stage-grid {
+                grid-template-columns: 1fr !important;
+            }
+        }
+
         .roles-section {
             background: #1a1a1a;
             padding: 80px 20px;
@@ -240,6 +252,54 @@
             <div class="trip-intro">
                 <p>From the sun-scorched Mexican border to the frozen reaches of the Arctic Circle, Darrell J. Gardner embarked on an unprecedented journey powered by nothing but human determination.</p>
                 <p>Following the Pacific Coast Highway, threading through the Inside Passage of British Columbia, and pushing north beyond the edge of civilization—all by hiking, kayaking, and sheer willpower.</p>
+            </div>
+
+            <div style="max-width: 900px; margin: 40px auto 50px auto; padding: 30px; background: #1a1a1a; border-radius: 8px; border-left: 4px solid #ff6600;">
+                <h3 style="font-family: 'Bebas Neue', sans-serif; font-size: 28px; color: #ff6600; margin: 0 0 20px 0; text-align: center;">The Six Stages</h3>
+                <div class="stage-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div>
+                        <a href="stage-1-pct.html" class="stage-link-card" style="text-decoration: none; color: #ffffff; display: block; padding: 15px; background: #0a0a0a; border-radius: 4px; transition: all 0.3s ease;">
+                            <div style="font-family: 'Bebas Neue', sans-serif; font-size: 20px; color: #ff6600; margin-bottom: 5px;">Stage I</div>
+                            <div style="font-size: 16px; font-weight: 700;">Pacific Crest Trail</div>
+                            <div style="font-size: 13px; color: #999999; margin-top: 5px;">2,650 miles • 2004-2005</div>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="stage-2-bridge.html" class="stage-link-card" style="text-decoration: none; color: #ffffff; display: block; padding: 15px; background: #0a0a0a; border-radius: 4px; transition: all 0.3s ease;">
+                            <div style="font-family: 'Bebas Neue', sans-serif; font-size: 20px; color: #ff6600; margin-bottom: 5px;">Stage II</div>
+                            <div style="font-size: 16px; font-weight: 700;">The Bridge</div>
+                            <div style="font-size: 13px; color: #999999; margin-top: 5px;">350 miles • 2005-2006</div>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="stage-3-inside-passage.html" class="stage-link-card" style="text-decoration: none; color: #ffffff; display: block; padding: 15px; background: #0a0a0a; border-radius: 4px; transition: all 0.3s ease;">
+                            <div style="font-family: 'Bebas Neue', sans-serif; font-size: 20px; color: #ff6600; margin-bottom: 5px;">Stage III</div>
+                            <div style="font-size: 16px; font-weight: 700;">Inside Passage</div>
+                            <div style="font-size: 13px; color: #999999; margin-top: 5px;">1,300 miles • 2006-2007</div>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="stage-4-yukon.html" class="stage-link-card" style="text-decoration: none; color: #ffffff; display: block; padding: 15px; background: #0a0a0a; border-radius: 4px; transition: all 0.3s ease;">
+                            <div style="font-family: 'Bebas Neue', sans-serif; font-size: 20px; color: #ff6600; margin-bottom: 5px;">Stage IV</div>
+                            <div style="font-size: 16px; font-weight: 700;">Yukon River</div>
+                            <div style="font-size: 13px; color: #999999; margin-top: 5px;">500 miles • 2007-2008</div>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="stage-5-brooks-range.html" class="stage-link-card" style="text-decoration: none; color: #ffffff; display: block; padding: 15px; background: #0a0a0a; border-radius: 4px; transition: all 0.3s ease;">
+                            <div style="font-family: 'Bebas Neue', sans-serif; font-size: 20px; color: #ff6600; margin-bottom: 5px;">Stage V</div>
+                            <div style="font-size: 16px; font-weight: 700;">Brooks Range</div>
+                            <div style="font-size: 13px; color: #999999; margin-top: 5px;">800 miles • 2008-2009</div>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="stage-6-arctic-ocean.html" class="stage-link-card" style="text-decoration: none; color: #ffffff; display: block; padding: 15px; background: #0a0a0a; border-radius: 4px; transition: all 0.3s ease;">
+                            <div style="font-family: 'Bebas Neue', sans-serif; font-size: 20px; color: #ff6600; margin-bottom: 5px;">Stage VI</div>
+                            <div style="font-size: 16px; font-weight: 700;">Arctic Ocean</div>
+                            <div style="font-size: 13px; color: #999999; margin-top: 5px;">100 miles • 2009-2010</div>
+                        </a>
+                    </div>
+                </div>
             </div>
 
             <div class="journey-stages">
