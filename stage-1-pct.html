@@ -2524,32 +2524,24 @@
             function closeLightbox() {
                 overlay.classList.remove('active');
                 document.body.style.overflow = '';
-                lbImg.src = '';
                 resetZoomPan();
+                lbImg.style.opacity = '1';
             }
 
             function loadImage() {
                 const item = gallery[idx];
-                lbSpinner.classList.add('visible');
-                lbImg.style.opacity = '0';
-                lbCaption.textContent = '';
                 resetZoomPan();
 
-                lbImg.onload = function () {
-                    lbSpinner.classList.remove('visible');
-                    lbImg.style.transition = 'opacity 0.15s ease';
-                    lbImg.style.opacity = '1';
-                    setTimeout(function() { lbImg.style.transition = ''; }, 160);
-                    const cap = item.alt || '';
-                    lbCaption.textContent = (cap && cap.toLowerCase().indexOf('placeholder') === -1 && cap.toLowerCase().indexOf('coming soon') === -1) ? cap : '';
-                    lbCounter.textContent = (idx + 1) + ' / ' + gallery.length;
-                    lbPrev.style.display = gallery.length > 1 ? 'flex' : 'none';
-                    lbNext.style.display = gallery.length > 1 ? 'flex' : 'none';
-                };
-                lbImg.onerror = function () {
-                    lbSpinner.classList.remove('visible');
-                    lbImg.style.opacity = '1';
-                };
+                // Show counter and arrow state immediately
+                lbCounter.textContent = (idx + 1) + ' / ' + gallery.length;
+                lbPrev.style.display = gallery.length > 1 ? 'flex' : 'none';
+                lbNext.style.display = gallery.length > 1 ? 'flex' : 'none';
+                const cap = item.alt || '';
+                lbCaption.textContent = (cap && cap.indexOf('placeholder') === -1 && cap.indexOf('coming soon') === -1) ? cap : '';
+
+                // Set image directly — works for both cached and uncached
+                lbImg.style.opacity = '1';
+                lbImg.style.transition = '';
                 lbImg.src = item.src;
                 lbImg.alt = item.alt || '';
             }
